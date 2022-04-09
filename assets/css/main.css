@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
+
+ul.links>li:hover {
+    color: #11405d;
+}
+
+.advantages-one {
+    background: url('../images/advantages-one.png') no-repeat center center;
+    background-color: #11405d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.advantages-two {
+    background: url('../images/advantages-two.png') no-repeat center center;
+    background-color: #11405d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.advantages-three {
+    background: url('../images/advantages-three.png') no-repeat center center;
+    background-color: #11405d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.yamal-section {
+    background: url('../images/yamal-bg.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.amur-section {
+    background: url('../images/amur-bg.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
