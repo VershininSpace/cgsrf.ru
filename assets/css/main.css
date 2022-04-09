@@ -51,3 +51,62 @@ ul.links>li:hover {
     -o-background-size: cover;
     background-size: cover;
 }
+
+svg.map {
+    width: 100%;
+    margin-top: 2%;
+
+}
+
+path.map {
+    transition: all .5s;
+    fill: rgba(0, 0, 0, 0);
+    stroke: rgba(0, 0, 0, 0.5);
+}
+
+.indicator {
+    position: absolute;
+    display: inline;
+    background: rgba(0, 0, 0, 1);
+    color: #f1f1f1;
+    padding: 10px 30px;
+    font: 20px Arial;
+    border-radius: 5px;
+    min-width: 300px;
+    text-transform: capitalize;
+    display: none;
+}
+
+.flag {
+    width: 80px;
+}
+
+.clear {
+    clear: both
+}
+
+.name {
+    float: left;
+    margin-right: 30px;
+}
+
+.regs {
+    columns: 5;
+    padding: 10px;
+}
+
+.reg span {
+    font-size: 10px;
+
+}
+
+.regs div {
+    width: auto;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.capital {
+    clear: both;
+}
