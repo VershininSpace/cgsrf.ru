@@ -11,7 +11,7 @@ ul.links>li:hover {
 
 .advantages-one {
     background: url('../images/advantages-one.png') no-repeat center center;
-    background-color: #11405d;
+    background-color: #208BB0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -20,7 +20,7 @@ ul.links>li:hover {
 
 .advantages-two {
     background: url('../images/advantages-two.png') no-repeat center center;
-    background-color: #11405d;
+    background-color: #208BB0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,7 +29,7 @@ ul.links>li:hover {
 
 .advantages-three {
     background: url('../images/advantages-three.png') no-repeat center center;
-    background-color: #11405d;
+    background-color: #208BB0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -58,21 +58,34 @@ svg.map {
 
 }
 
-path.map {
+.banner {
+    background: url('../images/bg-banner.png') no-repeat center center;
+    background-color: #11405d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#banner-map path {
     transition: all .5s;
-    fill: rgba(0, 0, 0, 0);
-    stroke: rgba(0, 0, 0, 0.5);
+    fill: #fff;
+    stroke: rgba(17, 64, 93,1);
+}
+
+#banner-map path:hover {
+    fill: #208BB0;
 }
 
 .indicator {
     position: absolute;
     display: inline;
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, .8);
     color: #f1f1f1;
-    padding: 10px 30px;
-    font: 20px Arial;
+    padding: 5px 15px;
+    font: 14px Arial;
     border-radius: 5px;
-    min-width: 300px;
+    /*min-width: 300px;*/
     text-transform: capitalize;
     display: none;
 }
