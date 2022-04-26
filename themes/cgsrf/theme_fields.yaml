@@ -1,0 +1,33 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+
+        site_settings:
+            tab: Сайт
+            label: Настройки сайта
+            span: full
+            type: section
+
+        site_name:
+            tab: Сайт
+            label: Название сайта
+            comment: Название сайта которе будет показываться во front-end
+            default: Центральные Газовые Сети
+            span: auto
+
+        phones:
+            tab: Сайт
+            label: 'Список телефонов'
+            prompt: 'Добавить телефон'
+            span: auto
+            type: repeater
+            form:
+                fields:
+                    item:
+                        label: Номер телефона
+                        span: full
+                        type: text
+                        placeholder:  + 7 (989) 123 - 44 -44

@@ -1,0 +1,47 @@
+<footer class="bg-[#f6f6f6] text-center xl:text-left px-4 xl:px-0">
+    <div class="container mx-auto py-16 xl:flex justify-between">
+        <div class="mb-5 xl:mb-0 flex flex-col items-center xl:block">
+            <a {{ this.page.id !='index' ? 'href="/"'  }}>
+                <img src="{{ 'assets/images/logo.svg' | theme }}" alt="logo" />
+            </a>
+            <div class="py-3.5">
+                <p class="font-extrabold">
+                    <a class="font-extrabold hover:text-[#11405d]" href="tel:+79069769694">+7 906 976-96-94</a>,
+                    <a class="font-extrabold hover:text-[#11405d]" href="tel:+79039007374">+7 903 900-73-74</a>
+                </p>
+                <p class="text-sm">Круглосуточно</p>
+            </div>
+            <ul class="flex">
+                <!-- <li class="mr-2">
+                    <a href="#"><img src="./assets/images/inst_icon.svg" alt="instagram" />
+                    </a>
+                </li> -->
+                <li>
+                    <a href="#"><img src="{{ 'assets/images/wa_icon.svg' | theme }}" alt="whatsapp" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="hidden xl:block links leading-[32px] mb-5 xl:mb-0">
+            <li><a href="#">О компании</a></li>
+            <li><a href="#">Противодействие мошенничеству</a></li>
+            <li><a href="#">Газификация регионов</a></li>
+            <li><a href="#">Вакансии</a></li>
+            <li><a href="#">Контактная информация</a></li>
+        </ul>
+        <ul class="hidden xl:block links leading-[32px]">
+            <li><a href="#">Постановление 410</a></li>
+            <li><a href="#">Порядок приостановки подачи газа</a></li>
+            <li>
+                <a href="#">Требования к пользованию газовым оборудованием</a>
+            </li>
+            <li>
+                <a href="#">Обязанности пользователя газового оборудования</a>
+            </li>
+            <li><a href="#">График проведения работ ВДГО/ВКГО</a></li>
+        </ul>
+    </div>
+    <p class="hidden sm:block bg-[#11405d] py-2.5 text-center text-sm text-white">
+        Copyright © {{ 'now' | date('Y') }} ООО "Центральные Газовые Сети". Все права защищены.
+    </p>
+</footer>

@@ -1,0 +1,119 @@
+description = "Основной"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[genericForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[LocationPicker]
+==
+<?php
+//function onStart() {
+//	$s = Session::get('Region');
+//	var_dump($s);
+//}
+?>
+==
+{#
+{variable name="description" label="Описание" tab="Разное" type="textarea"}{/variable}
+{variable name="navigation" label="Выводить навигацию" tab="Разное" type="switch"}{/variable}
+{variable name="image" label="Картинка" tab="Разное" type="mediafinder" mode="image"}{/variable}
+#}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	{% partial "Site/Meta" %}
+</head>
+
+<body class="text-[#222222]">
+	{% partial "Site/Header" %}
+	{% partial "Site/Breadcrumbs" %}
+	<main>
+		<div class="container mx-auto px-2 py-5">
+			{#<div class="flex">
+				<div class="w-3/4">
+					{% page %}
+				</div>
+
+				<div class="w-1/4 flex flex-col">
+					{% set serives2 = { 
+
+						0 : {
+							'name': 'Обслуживание ВДГО',
+							'image': 'assets/images/vdgo.png' | theme
+						},
+						1 : {
+							'name': 'Замена счетчика',
+							'image': 'assets/images/counter.png' | theme
+						},
+						2 : {
+							'name': 'Ремонт газового котла',
+							'image': 'assets/images/boiler.png' | theme
+						},
+
+						3 : {
+							'name': 'Монтажные работы',
+							'image': 'assets/images/job-one.png' | theme
+						},
+						4 : {
+							'name': 'Пусконаладочные работы',
+							'image': 'assets/images/job-two.png' | theme
+						},
+						5 : {
+							'name': 'Круглосуточная аварийная линия поддержки',
+							'image': 'assets/images/job-three.png' | theme
+						},
+					} %}
+					{% partial "Blocks/staticServices" items=serives2 %}
+				</div>
+			</div>#}
+			{% page %}
+			<div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5">
+				{% set serives2 = { 
+
+					0 : {
+						'name': 'Обслуживание ВДГО',
+						'image': 'assets/images/vdgo.png' | theme
+					},
+					1 : {
+						'name': 'Замена счетчика',
+						'image': 'assets/images/counter.png' | theme
+					},
+					2 : {
+						'name': 'Ремонт газового котла',
+						'image': 'assets/images/boiler.png' | theme
+					},
+
+					3 : {
+						'name': 'Монтажные работы',
+						'image': 'assets/images/job-one.png' | theme
+					},
+					4 : {
+						'name': 'Пусконаладочные работы',
+						'image': 'assets/images/job-two.png' | theme
+					},
+					5 : {
+						'name': 'Круглосуточная аварийная линия поддержки',
+						'image': 'assets/images/job-three.png' | theme
+					},
+				} %}
+				{% partial "Blocks/staticServices" items=serives2 %}
+			</div>
+		</div>
+	</main>
+	{% partial "Site/Footer" %}
+	{% partial "Site/Scripts" %}
+</body>
+
+</html>

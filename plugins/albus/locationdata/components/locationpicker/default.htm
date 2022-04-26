@@ -1,0 +1,8 @@
+{{ form_open() }}
+    <label for="accountState">Область</label>
+    <select name="region" data-request="onSwitchRegion" class="form-control">
+        {% for code, name in regions %}
+            <option value="{{ code }}" {{ code == activeRegion ? 'selected' }}>{{ name }}</option>
+        {% endfor %}
+    </select>
+{{ form_close() }}

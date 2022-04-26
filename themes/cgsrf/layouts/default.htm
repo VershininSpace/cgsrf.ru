@@ -1,0 +1,32 @@
+description = "Шаблон CMS"
+
+[genericForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[LocationPicker]
+==
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	{% partial "Site/Meta" %}
+</head>
+
+<body class="text-[#222222]">
+	{% partial "Site/Header" %}
+	<main>
+		{% page %}
+	</main>
+	{% partial "Site/Footer" %}
+	{% partial "Site/Scripts" %}
+</body>
+
+</html>

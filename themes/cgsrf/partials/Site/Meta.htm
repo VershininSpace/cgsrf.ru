@@ -1,0 +1,35 @@
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" /> -->
+<title>{{ this.page.id == 'index' ? this.theme.site_name : this.page.title ~ ' | ' ~ this.theme.site_name }}</title>
+<meta name="title" content="{{ this.page.meta_title }}" />
+<meta name="description" content="{{ this.page.meta_description }}" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png' | theme }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/favicon/favicon-32x32.png' | theme }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ 'assets/favicon/favicon-16x16.png' | theme }}">
+<link rel="manifest" href="{{ 'assets/favicon/site.webmanifest' | theme }}">
+<link rel="mask-icon" href="{{ 'assets/favicon/safari-pinned-tab.svg' | theme }}" color="#5bbad5">
+<link rel="shortcut icon" href="{{ 'assets/favicon/favicon.ico' | theme }}">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="{{ 'assets/favicon/browserconfig.xml' | theme }}">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<!-- <link rel="stylesheet" href="assets/css/output.css" /> -->
+<link rel="stylesheet" href="{{ 'assets/css/main.css' | theme }}"/>
+<link rel="stylesheet" href="{{ 'assets/css/wow.min.css' | theme }}"/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="{{ 'assets/js/wow.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/modernizr.min.js' | theme }}"></script>
+
+{% styles %}

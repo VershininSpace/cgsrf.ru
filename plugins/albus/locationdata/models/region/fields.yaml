@@ -1,0 +1,103 @@
+fields:
+    name:
+        label: Название
+        type: text
+        span: storm
+        cssClass: col-sm-6
+        required: true
+        
+    slug:
+        label: Slug
+        preset:
+            field: name
+            type: slug
+        type: text
+        span: storm
+        cssClass: col-sm-6
+        required: true
+
+    code:
+        label: Буквенный код
+        type: text
+        placeholder: MOW
+        span: storm
+        cssClass: col-sm-6 col-md-3
+        required: true
+
+    number_code:
+        label: Цифровой код
+        type: text
+        placeholder: 70
+        span: storm
+        cssClass: col-sm-6 col-md-3
+
+    coordinates:
+        label: Координаты
+        type: text
+        span: storm
+        cssClass: col-sm-6 col-md-3
+
+    address:
+        label: Адрес
+        type: text
+        span: storm
+        cssClass: col-sm-6  col-md-3
+        required: true
+
+
+    phones:
+        label: Телефоны
+        type: repeater
+        titleFrom: title_when_collapsed
+        required: true
+        form:
+            fields:
+                item:
+                    label: Телефон
+                    type: text
+                    placeholder: '+7 (495) 123-45-67'
+
+
+
+    content:
+        label: Контент
+        span: full
+        type: nestedform
+        showPanel: true
+        commentAbove: Информация о партнере.
+        form:
+            tabs:
+                fields:
+                    website:
+                        tab: Инфо
+                        label: Сайт
+                        span: auto
+                        type: text
+                    description:
+                        tab: Инфо
+                        label: Описание
+                        size: giant
+                        span: full
+                        type: richeditor
+                    logo:
+                        tab: Картинки
+                        label: Логотип
+                        mode: image
+                        useCaption: true
+                        thumbOptions:
+                            mode: crop
+                            extension: auto
+                        span: auto
+                        type: fileupload
+                        fileTypes: svg, ico, jpg, jpeg, png, webp
+
+
+    # optionsSection:
+    #     type: section
+    #     label: Опции
+    #     comment: Настройки
+    # show:
+    #     label: Показывать
+    #     span: auto
+    #     default: 1
+    #     type: switch

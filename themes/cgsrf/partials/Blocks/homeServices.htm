@@ -1,0 +1,10 @@
+<section class="container mx-auto px-4 xl:px-0 xl:flex justify-between py-16 text-center">
+    {% for item in items %}
+        <a {{ url ? 'href="{{ url }}"' }} class="flex flex-col items-center xl:block xl:w-[370px] wow flipInY">
+            <img src="{{ item.image }}" alt="image" />
+            <p class="block text-xl font-bold uppercase pt-4">
+                {{ item.name }}
+            </p>
+        </a>
+    {% endfor %}
+</section>

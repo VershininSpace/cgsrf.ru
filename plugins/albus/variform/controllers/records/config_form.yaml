@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Record
+
+# Model Form Field configuration
+form: $/albus/variform/models/record/fields.yaml
+
+# Model Class name
+modelClass: Albus\VariForm\Models\Record
+
+# Default redirect location
+defaultRedirect: albus/variform/records
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: albus/variform/records/update/:id
+    redirectClose: albus/variform/records
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: albus/variform/records
+    redirectClose: albus/variform/records
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

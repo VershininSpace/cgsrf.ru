@@ -1,0 +1,14 @@
+{% set countryId = 185 %}
+{% set stateId = stateId|default(form_value('state_id')) %}
+
+{{ countryId }}
+
+
+<div class="form-group">
+    <label for="accountState">State</label>
+    {{ form_select_state('state_id', countryId, stateId, {
+        id: 'accountState',
+        class: 'form-control',
+        emptyOption: ''
+    }) }}
+</div>

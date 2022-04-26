@@ -1,0 +1,32 @@
+<?php 
+$data = $model->form_data;
+$record = json_decode($data);
+?>
+
+
+<table class="table data" style="box-shadow: 4px 4px 10px #aaaaaad1; border-radius: 1rem;">
+    <thead>
+        <tr>
+            <th><span>Название</span></th>
+            <th><span>Значение</span></th>
+        </tr>
+    </thead>
+    <?php foreach ($record as &$item) { ?>
+        <tr>
+            <td style="font-weight: bold;"><? echo $item->name ?></td>
+
+            <?php if ($item->type == 'chechbox') {
+                echo '<td><input name="checkbox" value="1" checked onclick="return false" type="checkbox" id="checkbox1" /></td>';
+            } else {
+                echo "<td> $item->value  </td>";
+            } ?>
+        </tr>
+    <?php } ?>
+</table>
+
+<div class="callout fade in callout-info no-subheader">
+    <div class="header">
+        <i class="icon-info"></i>
+        <h3>Новое сообщение</h3>
+    </div>
+</div>

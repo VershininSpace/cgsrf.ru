@@ -1,0 +1,179 @@
+[staticMenu]
+code = "main"
+==
+<style>
+    #RU-{{ activeRegion.code }} {
+        fill: #208BB0 !important;
+    }
+</style>
+<div class="preloader-selector bg-gray-300 fixed w-full hidden z-[999]">
+    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+    </div>
+</div>
+<div class="infoline bg-white flex flex-wrap border-b border-gray-300">
+    <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+        <div x-data="{ open: false }">
+            {#<button data-code="RU-{{ activeRegion.code }}" id="currentRegion" x-on:click="open = ! open"
+                x-ref="selected"
+                class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">{{
+                activeRegion.name }}</button>#}
+
+            <button data-code="RU-{{ activeRegion.code }}" id="currentRegion" x-on:click="open = ! open"
+            x-ref="selected"
+            class="flex-shrink-0 text-black py-2 px-8 text-lg ">{{
+            activeRegion.name }}</button>
+
+            <div x-cloak x-show="open"
+                class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center">
+                <div class="bg-white relative flex w-[90%] md:w-auto flex-wrap p-10 rounded shadow-md">
+                    <div class="flex mb-[2rem] justify-between w-full text-2xl">
+                        <p>Выберете свой регион:</p>
+                        <button class="menu_toogle text-[#11405d] text-3xl items-center" x-on:click="open = ! open">✖</button>
+                    </div>
+                    <div class="w-full px-6">
+                        <form method="post" id="regionChanger" x-data="region_changer">
+                            <ul class="columns-2">
+                                {% for code, name in regions %}
+                                <li class="mb-4">
+                                    <input x-on:click="open = ! open" {{ code == activeRegion.code ? 'checked' }} data-name="{{ name }}" @click="toggle" type="radio" id="region_{{ code }}" name="region" value="{{ code }}">
+                                    <label class="text-xl cursor-pointer p-2 font-bold hover:text-[#11405d]" for="region_{{ code }}">{{ name }}</label>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center">
+            <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M92.5,124.8a83.6,83.6,0,0,0,39,38.9,8,8,0,0,0,7.9-.6l25-16.7a7.9,7.9,0,0,1,7.6-.7l46.8,20.1a7.9,7.9,0,0,1,4.8,8.3A48,48,0,0,1,176,216,136,136,0,0,1,40,80,48,48,0,0,1,81.9,32.4a7.9,7.9,0,0,1,8.3,4.8l20.1,46.9a8,8,0,0,1-.6,7.5L93,117A8,8,0,0,0,92.5,124.8Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+            <span>{{ activeRegion.address }} </span>
+        </div>
+        <div class="flex items-center">
+            <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="56" y1="232" x2="200" y2="232" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="104" r="32" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+            
+            {% for item in activeRegion.phones %}
+                <a title="{{ item.item }}" href="tel:{{ item.item | replace({' ': '', '-': '', '(': '', ')': ''}) }}" class="mr-3">{{ item.item }}</a>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Desktop Header -->
+<header class="hidden xl:block bg-white">
+    <nav class="container mx-auto py-5 flex justify-between items-center">
+        <a {{ this.page.id !='index' ? 'href="/"'  }}>
+            <img src="{{ 'assets/images/logo.svg' | theme }}" alt="logo" />
+        </a>
+        <ul class="flex space-x-8 uppercase links">
+
+
+            {% for item in staticMenu.menuItems | slice(0,4) if not item.viewBag.isHidden %}
+                <li role="presentation" class="{{ item.viewBag.cssClass }}">
+                    <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
+                        {{ item.title }}
+                    </a>
+                </li>
+            {% endfor %}
+
+            <li class="group relative">
+                <div class="flex items-center">
+                    <button class="mr-1" type="button">Еще</button>
+                    <svg class="group-hover:hidden" width="16" height="16" viewBox="0 0 15 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.1857 4.99313L7.50003 9.56063L2.8144 4.99313C2.73068 4.91136 2.6183 4.86558 2.50128 4.86558C2.38425 4.86558 2.27187 4.91136 2.18815 4.99313C2.14762 5.03284 2.11541 5.08025 2.09343 5.13257C2.07144 5.18488 2.06012 5.24106 2.06012 5.29781C2.06012 5.35456 2.07144 5.41074 2.09343 5.46306C2.11541 5.51538 2.14762 5.56278 2.18815 5.6025L7.17284 10.4625C7.26038 10.5478 7.37778 10.5956 7.50003 10.5956C7.62227 10.5956 7.73968 10.5478 7.82721 10.4625L12.8119 5.60344C12.8527 5.56369 12.8852 5.51617 12.9073 5.46368C12.9295 5.41119 12.9409 5.35479 12.9409 5.29781C12.9409 5.24084 12.9295 5.18444 12.9073 5.13195C12.8852 5.07946 12.8527 5.03193 12.8119 4.99219C12.7282 4.91042 12.6158 4.86464 12.4988 4.86464C12.3818 4.86464 12.2694 4.91042 12.1857 4.99219V4.99313Z"
+                            fill="#222222" />
+                    </svg>
+                    <svg class="group-hover:block hidden" width="16" height="16" viewBox="0 0 15 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.1856 10.0069L7.49997 5.43937L2.81434 10.0069C2.73062 10.0886 2.61824 10.1344 2.50121 10.1344C2.38419 10.1344 2.27181 10.0886 2.18809 10.0069C2.14755 9.96716 2.11535 9.91975 2.09337 9.86743C2.07138 9.81512 2.06006 9.75894 2.06006 9.70219C2.06006 9.64544 2.07138 9.58926 2.09337 9.53694C2.11535 9.48462 2.14755 9.43722 2.18809 9.3975L7.17278 4.5375C7.26032 4.45217 7.37772 4.40442 7.49997 4.40442C7.62221 4.40442 7.73962 4.45217 7.82715 4.5375L12.8118 9.39656C12.8527 9.43631 12.8851 9.48383 12.9073 9.53632C12.9294 9.58881 12.9408 9.64521 12.9408 9.70219C12.9408 9.75916 12.9294 9.81556 12.9073 9.86805C12.8851 9.92054 12.8527 9.96807 12.8118 10.0078C12.7281 10.0896 12.6157 10.1354 12.4987 10.1354C12.3817 10.1354 12.2693 10.0896 12.1856 10.0078V10.0069Z"
+                            fill="#03405D" />
+                    </svg>
+                </div>
+
+                <div
+                    class="z-40 absolute right-0 hidden group-hover:block bg-white shadow-[0px_4px_18px_rgba(0,0,0,0.14)] py-5 px-7">
+                    <ul class="links normal-case text-[#222222] leading-[32px] w-[470px]">
+                        {% for item in staticMenu.menuItems | slice(4,auto) if not item.viewBag.isHidden %}
+                            <li role="presentation" class="{{ item.viewBag.cssClass }}">
+                                <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
+                                    {{ item.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <ul class="flex">
+            <!-- <li class="mr-2">
+                <a href="#"><img src="./assets/images/inst_icon.svg" alt="instagram" />
+                </a>
+            </li> -->
+            <li>
+                <a href="#"><img src="{{ 'assets/images/wa_icon.svg' | theme }}" alt="whatsapp" /></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- Mobile Header -->
+<header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 xl:hidden">
+    <div class="flex items-center justify-between">
+        <a href="#" class="text-3xl font-semibold uppercase hover:text-gray-300">
+            <img src="{{ 'assets/images/logo.svg' | theme }}" alt="logo" />
+        </a>
+        <button @click="isOpen = !isOpen" class="text-3xl focus:outline-none">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Dropdown Nav -->
+    <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-6">
+        <ul class="space-y-6 links">
+            {% for item in staticMenu.menuItems if not item.viewBag.isHidden %}
+                <li role="presentation" class="{{ item.viewBag.cssClass }}">
+                    <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
+                        {{ item.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>
+
+
+<!-- <section class="text-gray-600 body-font relative">
+    <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+        <div
+            class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+            <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0"
+                marginwidth="0" scrolling="no"
+                src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+                style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
+            <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+                <div class="lg:w-1/2 px-6">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+                    <p class="mt-1">Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
+                </div>
+                <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+                    <a class="text-indigo-500 leading-relaxed">example@email.com</a>
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
+                    <p class="leading-relaxed">123-456-7890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->

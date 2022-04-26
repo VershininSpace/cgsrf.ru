@@ -1,0 +1,49 @@
+<section class="text-white breadcrumbs bg-cover bg-center overlay relative" style="background-image: url( {{ image | media }} );">
+    <div class="top-0 left-0 absolute bg-[#11405d] w-full h-full bg-opacity-50"></div>
+    <div class="w-full top-0 left-0 relative z-1">
+        <div class="container mx-auto py-16 xl:py-40 xl:pb-32 px-4 xl:px-0 text-center xl:text-left">
+            <div class="flex flex-col xl:flex-row justify-between items-center">
+                <div class="xl:w-2/5">
+                    <h2 class="font-extrabold text-4xl xl:text-6xl mb-6">
+                        {{ this.page.title }}
+                    </h2>
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-3 text-white transition">
+                            <li class="inline-flex items-center">
+                                <a href="#"
+                                    class="inline-flex items-center font-medium hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                                    <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"> </path> </svg>
+                                    Главная
+                                </a>
+                            </li>
+                            {% placeholder breadcrumbs %}
+                            {% for breadcrumb in breadcrumbs if breadcrumb.isActive == false  %}
+                                <li class="flex items-center">
+                                    <a href="#" class="ml-1 font-medium hover:text-gray-500 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
+                                </li>
+                            {% endfor %}
+                            <li class="flex items-center" aria-current="page">
+                                <span class="ml-1 font-medium text-gray-200 md:ml-2 dark:text-gray-500">{{ this.page.title }}</span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .breadcrumbs {
+        --chevron: '>'
+    }
+    /* .breadcrumbs li:not(:first-child) {
+
+        background-color: #900;
+    } */
+
+    .breadcrumbs li:not(:first-child)::before {
+        content: var(--chevron);
+    }
+</style>

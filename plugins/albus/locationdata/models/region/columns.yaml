@@ -1,0 +1,15 @@
+columns:
+    id:
+        label: ID
+        type: number
+    name:
+        label: Название
+        type: text
+    slug:
+        label: Название
+        type: text
+
+    sort_order:
+        label: Порядок
+        type: number
+

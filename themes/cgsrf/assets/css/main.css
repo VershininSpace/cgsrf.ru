@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
+
+[x-cloak] { display: none !important; }
+
+
+ul.links>li:hover {
+    color: #11405d;
+}
+
+.advantages-one {
+    background: url('../images/advantages-one.png') no-repeat center center;
+    background-color: #208BB0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.advantages-two {
+    background: url('../images/advantages-two.png') no-repeat center center;
+    background-color: #208BB0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.advantages-three {
+    background: url('../images/advantages-three.png') no-repeat center center;
+    background-color: #208BB0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.yamal-section {
+    background: url('../images/yamal-bg.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.amur-section {
+    background: url('../images/amur-bg.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+svg.map {
+    width: 100%;
+    margin-top: 2%;
+
+}
+
+.banner {
+    background: url('../images/bg-banner.png') no-repeat center center;
+    background-color: #11405d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#banner-map path {
+    transition: all .5s;
+    fill: #fff;
+    stroke: rgba(17, 64, 93,1);
+}
+
+#banner-map path:hover {
+    fill: #208BB0;
+}
+
+.indicator {
+    position: absolute;
+    display: inline;
+    background: rgba(0, 0, 0, .8);
+    color: #f1f1f1;
+    padding: 5px 15px;
+    font: 14px Arial;
+    border-radius: 5px;
+    /*min-width: 300px;*/
+    text-transform: capitalize;
+    display: none;
+}
+
+.flag {
+    width: 80px;
+}
+
+.clear {
+    clear: both
+}
+
+.name {
+    float: left;
+    margin-right: 30px;
+}
+
+.regs {
+    columns: 5;
+    padding: 10px;
+}
+
+.reg span {
+    font-size: 10px;
+
+}
+
+.regs div {
+    width: auto;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.capital {
+    clear: both;
+}

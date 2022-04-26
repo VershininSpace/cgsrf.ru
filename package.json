@@ -1,5 +1,26 @@
 {
+  "name": "gazprom.loc",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">     <img src=\"https://github.com/octobercms/october/blob/develop/themes/demo/assets/images/october.png?raw=true\" alt=\"October\" width=\"25%\" height=\"25%\" /> </p>",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.0.23"
+    "babel-plugin-module-resolver": "^4.1.0",
+    "browser-sync": "^2.27.9",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.43",
+    "sass": "^1.50.1",
+    "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.2",
+    "oc-request": "^1.0.0"
   }
 }
