@@ -22,7 +22,12 @@ class Region extends Model
         'logo' => 'System\Models\File'
     ];
 
-    public function getDefault() {
-        self::where('id', Setting::get('default_region'))->first();
+    public function getDefault($attribute = null) {
+        $default = (object)[$attribute => null ];
+        $item = self::whereId(Setting::get('default_region'))->first();
+        if(!$item) {
+            $item = $default;
+        }
+        return $attribute === null ? $item : $item->$attribute;
     }
 }

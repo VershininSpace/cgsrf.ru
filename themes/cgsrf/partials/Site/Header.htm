@@ -14,16 +14,10 @@ code = "main"
 <div class="infoline bg-white flex flex-wrap border-b border-gray-300">
     <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
         <div x-data="{ open: false }">
-            {#<button data-code="RU-{{ activeRegion.code }}" id="currentRegion" x-on:click="open = ! open"
-                x-ref="selected"
-                class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">{{
-                activeRegion.name }}</button>#}
-
             <button data-code="RU-{{ activeRegion.code }}" id="currentRegion" x-on:click="open = ! open"
             x-ref="selected"
             class="flex-shrink-0 text-black py-2 px-8 text-lg ">{{
             activeRegion.name }}</button>
-
             <div x-cloak x-show="open"
                 class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center">
                 <div class="bg-white relative flex w-[90%] md:w-auto flex-wrap p-10 rounded shadow-md">
@@ -33,7 +27,7 @@ code = "main"
                     </div>
                     <div class="w-full px-6">
                         <form method="post" id="regionChanger" x-data="region_changer">
-                            <ul class="columns-2">
+                            <ul class="md:columns-2">
                                 {% for code, name in regions %}
                                 <li class="mb-4">
                                     <input x-on:click="open = ! open" {{ code == activeRegion.code ? 'checked' }} data-name="{{ name }}" @click="toggle" type="radio" id="region_{{ code }}" name="region" value="{{ code }}">
@@ -46,19 +40,20 @@ code = "main"
                 </div>
             </div>
         </div>
-        <div class="flex items-center">
-            <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M92.5,124.8a83.6,83.6,0,0,0,39,38.9,8,8,0,0,0,7.9-.6l25-16.7a7.9,7.9,0,0,1,7.6-.7l46.8,20.1a7.9,7.9,0,0,1,4.8,8.3A48,48,0,0,1,176,216,136,136,0,0,1,40,80,48,48,0,0,1,81.9,32.4a7.9,7.9,0,0,1,8.3,4.8l20.1,46.9a8,8,0,0,1-.6,7.5L93,117A8,8,0,0,0,92.5,124.8Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
-            <span>{{ activeRegion.address }} </span>
+        <div class="space-x-10 hidden md:flex">
+            {% if activeRegion.address %}
+                <div class="flex items-center justify-between">
+                    <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="56" y1="232" x2="200" y2="232" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="104" r="32" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                    <span>{{ activeRegion.address }} </span>
+                </div>
+            {% endif %}
+            {% if activeRegion.phones %}
+                <div class="flex items-center">
+                    <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M92.5,124.8a83.6,83.6,0,0,0,39,38.9,8,8,0,0,0,7.9-.6l25-16.7a7.9,7.9,0,0,1,7.6-.7l46.8,20.1a7.9,7.9,0,0,1,4.8,8.3A48,48,0,0,1,176,216,136,136,0,0,1,40,80,48,48,0,0,1,81.9,32.4a7.9,7.9,0,0,1,8.3,4.8l20.1,46.9a8,8,0,0,1-.6,7.5L93,117A8,8,0,0,0,92.5,124.8Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                    <a title="{{ activeRegion.phones[0].item }}" href="tel:{{ activeRegion.phones[0].item | replace({' ': '', '-': '', '(': '', ')': ''}) }}" class="mr-3">{{ activeRegion.phones[0].item }}</a>
+                </div>
+            {% endif %}
         </div>
-        <div class="flex items-center">
-            <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="56" y1="232" x2="200" y2="232" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="104" r="32" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
-            
-            {% for item in activeRegion.phones %}
-                <a title="{{ item.item }}" href="tel:{{ item.item | replace({' ': '', '-': '', '(': '', ')': ''}) }}" class="mr-3">{{ item.item }}</a>
-            {% endfor %}
-        </div>
-
-
     </div>
 </div>
 
@@ -69,8 +64,6 @@ code = "main"
             <img src="{{ 'assets/images/logo.svg' | theme }}" alt="logo" />
         </a>
         <ul class="flex space-x-8 uppercase links">
-
-
             {% for item in staticMenu.menuItems | slice(0,4) if not item.viewBag.isHidden %}
                 <li role="presentation" class="{{ item.viewBag.cssClass }}">
                     <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
@@ -78,7 +71,6 @@ code = "main"
                     </a>
                 </li>
             {% endfor %}
-
             <li class="group relative">
                 <div class="flex items-center">
                     <button class="mr-1" type="button">Еще</button>
@@ -95,9 +87,7 @@ code = "main"
                             fill="#03405D" />
                     </svg>
                 </div>
-
-                <div
-                    class="z-40 absolute right-0 hidden group-hover:block bg-white shadow-[0px_4px_18px_rgba(0,0,0,0.14)] py-5 px-7">
+                <div class="z-40 absolute right-0 hidden group-hover:block bg-white shadow-[0px_4px_18px_rgba(0,0,0,0.14)] py-5 px-7">
                     <ul class="links normal-case text-[#222222] leading-[32px] w-[470px]">
                         {% for item in staticMenu.menuItems | slice(4,auto) if not item.viewBag.isHidden %}
                             <li role="presentation" class="{{ item.viewBag.cssClass }}">
@@ -116,7 +106,7 @@ code = "main"
                 </a>
             </li> -->
             <li>
-                <a href="#"><img src="{{ 'assets/images/wa_icon.svg' | theme }}" alt="whatsapp" /></a>
+                <a href="{{ this.theme.whatsapp }}" target="_blank" name="WhatsApp"><img src="{{ 'assets/images/wa_icon.svg' | theme }}" alt="whatsapp" /></a>
             </li>
         </ul>
     </nav>
@@ -152,28 +142,3 @@ code = "main"
         </ul>
     </nav>
 </header>
-
-
-<!-- <section class="text-gray-600 body-font relative">
-    <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-        <div
-            class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-            <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0"
-                marginwidth="0" scrolling="no"
-                src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
-                style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
-            <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
-                <div class="lg:w-1/2 px-6">
-                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
-                    <p class="mt-1">Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
-                </div>
-                <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
-                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                    <a class="text-indigo-500 leading-relaxed">example@email.com</a>
-                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                    <p class="leading-relaxed">123-456-7890</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->

@@ -12,11 +12,7 @@ use Albus\LocationData\Models\Region;
  */
 class Plugin extends PluginBase
 {
-    /**
-     * Returns information about this plugin.
-     *
-     * @return array
-     */
+
     public function pluginDetails()
     {
         return [
@@ -34,12 +30,16 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-
-        Event::listen('cms.page.init', function($controller, $page) {
+        Event::listen('cms.page.init', function() {
             if (!Session::get('Region')) {
-                $json = Http::get('http://ip-api.com/json/' . '5.3.236.204' );
-                $data = json_decode($json);
-                Session::put("Region", $data->region);
+                try {
+                    $json = Http::get('http://ip-api.com/json/' . $_SERVER['REMOTE_ADDR'] );
+                    $data = json_decode($json);
+                    Session::put("Region", $data->region);
+                } catch (\Exception $e) {
+                    $region = (new Region)->getDefault('code');
+                    Session::put("Region", $region);
+                }
             }
         }, 100);
     }

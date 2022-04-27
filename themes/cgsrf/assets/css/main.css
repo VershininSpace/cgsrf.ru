@@ -7,6 +7,12 @@
 
 [x-cloak] { display: none !important; }
 
+.static_page a {
+    text-decoration: underline;
+}
+.static_page p {
+    margin-bottom: 0.5rem;
+}
 
 ul.links>li:hover {
     color: #11405d;

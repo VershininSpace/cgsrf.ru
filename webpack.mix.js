@@ -1,4 +1,5 @@
 const mix = require('laravel-mix'); // laravel-mix
+const tailwindcss = require('tailwindcss'); /* Add this line at the top */
 
 const themeName = 'cgsrf'; // October CMS
 
@@ -8,9 +9,14 @@ const paths = { //
 }
 
 mix.setPublicPath(paths.dist)
-.js(`${paths.src}/js/app.js`, `${paths.dist}/js/app.js`)
-//.extract()
-// .sass(`${paths.src}/sass/sytles.scss`, 'styles/main.css')
+  .js(`${paths.src}/js/app.js`, `${paths.dist}/js/app.js`)
+    // .sass(`${paths.src}/sass/styles.scss`, `${paths.dist}/css/styles.css`)
+    // .options({
+    //     postCss: [ tailwindcss('./tailwind.config.js') ],
+    // })
+    .postCss(`${paths.src}/css/styles.css`, `${paths.dist}/css/styles.css`, [
+      require("tailwindcss"),
+    ])
 .version()
 .options({
     processCssUrls: false

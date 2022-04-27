@@ -4,7 +4,6 @@
 
 tabs:
     fields:
-
         site_settings:
             tab: Сайт
             label: Настройки сайта
@@ -17,7 +16,6 @@ tabs:
             comment: Название сайта которе будет показываться во front-end
             default: Центральные Газовые Сети
             span: auto
-
         phones:
             tab: Сайт
             label: 'Список телефонов'
@@ -31,3 +29,9 @@ tabs:
                         span: full
                         type: text
                         placeholder:  + 7 (989) 123 - 44 -44
+        whatsapp:
+            tab: Сайт
+            type: text
+            label: WhatsApp
+            span: auto
+            comment: Ссылка на WhatsApp бизнес
