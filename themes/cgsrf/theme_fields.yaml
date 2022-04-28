@@ -35,3 +35,50 @@ tabs:
             label: WhatsApp
             span: auto
             comment: Ссылка на WhatsApp бизнес
+
+        pages_settings:
+            tab: Сайт
+            label: Настройки страниц
+            span: full
+            type: section
+
+        heroDocuments:
+            tab: Сайт
+            label: 'Список документов'
+            comment: Документы для главной страницы
+            prompt: 'Добавить документ'
+            span: full
+            type: repeater
+            form:
+                fields:
+                    name:
+                        label: Название
+                        span: auto
+                        type: text
+                        placeholder:  Лицензия
+                    file:
+                        label: Документ
+                        span: auto
+                        type: mediafinder
+                        
+        schedule_settings:
+            tab: Сайт
+            span: full
+            type: section
+
+        schedule:
+            tab: Сайт
+            label: 'Графики проведения работ'
+            prompt: 'Добавить график'
+            span: full
+            type: repeater
+            form:
+                fields:
+                    name:
+                        label: Название
+                        span: auto
+                        type: text
+                    file:
+                        label: Документ
+                        span: auto
+                        type: mediafinder

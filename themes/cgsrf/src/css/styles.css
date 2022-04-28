@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-h2 {
+.static_page h2, .static_page .h2  {
     @apply text-3xl;
     @apply font-bold;
 }
 
-h3 {
+.static_page h3, .static_page .h3 {
     @apply text-2xl;
     @apply font-bold;
 }
 
-h4 {
+.static_page h4, .static_page .h4 {
     @apply text-xl;
     @apply font-bold;
 }

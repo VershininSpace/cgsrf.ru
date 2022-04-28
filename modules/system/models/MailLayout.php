@@ -71,6 +71,19 @@ class MailLayout extends Model
         return array_get(self::listCodes(), $code);
     }
 
+    public static function findOrMakeLayout($code)
+    {
+        $layout = self::whereCode($code)->first();
+
+        if (!$layout && View::exists($code)) {
+            $layout = new self;
+            $layout->code = $code;
+            $layout->fillFromView($code);
+        }
+
+        return $layout;
+    }
+
     /**
      * Loops over each mail layout and ensures the system has a layout,
      * if the layout does not exist, it will create one.
@@ -133,8 +146,8 @@ class MailLayout extends Model
 
         $this->name = array_get($sections, 'settings.name', '???');
         $this->content_css = $css;
-        $this->content_html =  array_get($sections, 'html');
-        $this->content_text = array_get($sections, 'text');
+        $this->content_html =  $sections['html'] ?? '';
+        $this->content_text = $sections['text'] ?? '';
     }
 
     protected static function getTemplateSections($code)

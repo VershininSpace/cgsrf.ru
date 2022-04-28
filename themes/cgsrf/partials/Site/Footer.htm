@@ -1,6 +1,14 @@
 [staticMenu]
 code = "main"
 ==
+
+
+<span class="relative inline-flex">
+
+    <span class="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+    </span>
+  </span>
 <footer class="bg-[#f6f6f6] text-center xl:text-left ">
     <div class="container mx-auto py-16 xl:flex justify-between">
         <div class="mb-5 xl:mb-0 flex flex-col items-center xl:block">
@@ -43,6 +51,18 @@ code = "main"
     </p>
 </footer>
 
+<button type="button" x-data
+@click="$dispatch('open-modal');
+document.querySelector('#form_service').value = document.querySelector('#form_title').innerHTML = 'Обратный звонок'"
+class="bottom-8 right-8 rounded-full transition-all hover:bg-[#208BB0] bg-[#11405d] fixed z-50 p-4 flex items-center justify-center shadow">
+    <span class="animate-ping absolute inline-flex h-5/6 w-5/6 rounded-full bg-sky-400 opacity-75"></span>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256">
+        <rect width="256" height="256" fill="none"></rect>
+        <path class="stroke-white" d="M92.5,124.8a83.6,83.6,0,0,0,39,38.9,8,8,0,0,0,7.9-.6l25-16.7a7.9,7.9,0,0,1,7.6-.7l46.8,20.1a7.9,7.9,0,0,1,4.8,8.3A48,48,0,0,1,176,216,136,136,0,0,1,40,80,48,48,0,0,1,81.9,32.4a7.9,7.9,0,0,1,8.3,4.8l20.1,46.9a8,8,0,0,1-.6,7.5L93,117A8,8,0,0,0,92.5,124.8Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+    </svg>
+</button>
+
 <div x-data="{ open: false }" @open-modal.window="open = $event.detail">
     <div x-cloak x-show="open"
         class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center">
@@ -59,12 +79,17 @@ code = "main"
 					<div class="rounded-3xl font-bold" x-transition:enter.duration.500ms x-text="message"></div>
 					<div class="relative mb-4">
 						<label for="name" class="leading-7 text-sm text-gray-600">Ваше имя</label>
-						<input type="text" id="name" required name="ФИО"
+						<input type="text" id="name" name="ФИО"
 							class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
 					</div>
 					<div class="relative mb-4">
 						<label for="email" class="leading-7 text-sm text-gray-600">E-mail</label>
 						<input type="email" id="email" name="E-mail"
+							class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+					</div>
+                    <div class="relative mb-4">
+						<label for="phone" class="leading-7 text-sm text-gray-600">Телефон</label>
+						<input type="phone" id="phone" required name="Телефон"
 							class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
 					</div>
 					<div class="relative mb-4">
