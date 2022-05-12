@@ -1,0 +1,114 @@
+description = "Шаблон продукта"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[AppComponent]
+
+[UserData]
+
+[staticMenu]
+code = "mainmenu"
+==
+<?php
+function onStart(){
+	$slug = $this->param('slug');
+
+$product = $this->AppComponent->getProductPage($slug);
+$this['item'] = $product;
+$this->title = $this['item']['title'];
+
+$user = $this->UserData->get();
+$this['obUser'] = $user;
+
+}
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+
+{# Content #}
+
+<section class="tarifs article">
+	<div class="uk-container">
+		{% partial 'pages/inc/_headline' %}
+		<ul class="uk-breadcrumb uk-visible@s">
+			<li><a href="{{ url('/') }}"><span>Главная страница</span></a></li>
+			<li><a href="{{ url('/tarifs') }}"><span>Продукты</span></a></li>
+			<li><span class="uk-active">{{ item.title }}</span></li>
+		</ul>
+		<ul class="uk-grid-match" uk-grid>
+			<li class="uk-width-3-4@s">
+				<div>
+					<div class="article__title">{{ item.title }}</div>
+					<div class="article__intro">{{ item.intro | raw }}</div>
+
+					{% if (obUser) %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-url="https://eqclub.ru?ref=ei{{ obUser.id }}&tarif={{item.id}}"></div>
+					{% else %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram"></div>
+					{% endif %}
+
+					{% if item.image.path %}
+						<div class="article__image">
+							<img src="{{ item.image.path }}" alt="">
+						</div>
+					{% endif %}
+					<div class="article__content">
+
+						<ul class="uk-grid-match" uk-grid>
+							<li class="uk-width-3-4@s">
+								{% if item.video %}
+									<div class="article__video">
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ item.video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								{% endif %}
+								<div>	{{ item.desc | raw }}</div>
+							</li>
+							<li class="uk-width-1-4@s">
+								<div>
+									<div class="tarifs__footer">
+										<div class="tarifs__price">
+											<small>Стоимость:</small>{{ item.price }} <span>руб</span></div>
+											{% if (obUser) %}										
+												{% if item.link %}
+													<a href="{{ item.link }}" class="uk-button uk-button-primary" target="_blank">КУПИТЬ</a>
+												{% endif %}
+											{% else %}
+												<a href="" class="uk-button uk-button-primary" @click="document.getElementById('onModalRegisterForm').setAttribute('data-request-redirect', '{{ item.link }}')" uk-toggle="target: #ModalRegister">КУПИТЬ</a>
+											{% endif %}
+										{#<div class="tarifs__button">
+											<a href="" class="uk-button uk-button-primary" @click="buymodal(1, '{{ prod.code }}', 'КУПИТЬ', {{ item | json_encode }})" uk-toggle="target: #buymodal2">КУПИТЬ</a>
+										</div>#}
+										{% if (obUser) %}
+										<copy-btn link="https://eqclub.ru?ref=ei{{ obUser.id }}&tarif={{item.id}}"></copy-btn>
+										{% endif %}
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					{% if (obUser) %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-url="https://eqclub.ru?ref=ei{{ obUser.id }}&tarif={{item.id}}"></div>
+					{% else %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram"></div>
+					{% endif %}
+				</div>
+			</li>
+		</ul>
+
+	</div>
+</section>
+{#<buy-modal2 :buymodal="paymodal" :product="paymodal.product"></buy-modal2>#}
+
+
+{% put scr %}
+	<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+	<script src="https://yastatic.net/share2/share.js"></script>
+{% endput %}
+
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}

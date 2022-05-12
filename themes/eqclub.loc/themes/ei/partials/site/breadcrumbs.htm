@@ -1,0 +1,12 @@
+{% if breadcrumbs %}
+	<div class="uk-container breadcrumbs uk-visible@s">
+		<ul class="uk-breadcrumb">
+			<li><a href="{{ url('/') }}"><span>Экология поволжья</span></a></li>
+			{% for breadcrumb in breadcrumbs %}
+				<li class="{{ breadcrumb.isActive ? 'uk-active' : '' }}">
+					<a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}

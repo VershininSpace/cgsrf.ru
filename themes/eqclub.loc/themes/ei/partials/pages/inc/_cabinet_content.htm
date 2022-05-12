@@ -1,0 +1,19 @@
+<div class="cabinet__content">
+	<ul uk-tab="animation: uk-animation-fade" id="cab_tab">
+		<li><a href="#">Продукты</a></li>
+		<li><a href="#">Мои покупки</a></li>
+		<li><a href="#">Рефералы</a></li>
+		<li><a href="#">Операции</a></li>
+		<li><a href="#">Запросы на вывод</a></li>
+		<li><a href="#">Личные данные</a></li>
+	</ul>
+
+	<ul class="uk-switcher uk-margin cabcont">
+		<li>{% partial 'pages/inc/_cabinet_buy.htm' %}</li>
+		<li>{% partial 'pages/inc/_cabinet_mybuy.htm' %}</li>
+		<li>{% partial 'pages/inc/_cabinet_refs.htm' %}</li>
+		<li>{% partial 'pages/inc/_cabinet_transactions.htm' %}</li>
+		<li>{% partial 'pages/inc/_cabinet_moneyreq.htm' %}</li>
+		<li>{% partial 'pages/inc/_cabinet_data.htm' %}</li>
+	</ul>
+</div>

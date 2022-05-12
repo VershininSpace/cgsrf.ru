@@ -1,0 +1,21 @@
+<div class="firstauthor">
+	<ul class="uk-grid-match uk-position-relative" uk-grid>
+		<li class="uk-width-3-5@s">
+			<div class="uk-flex uk-flex-middle">
+				<div class="firstauthor__content">
+					{{ author1_desc | raw }}
+				</div>
+			</div>
+		</li>
+		<li class="uk-width-2-5@s uk-flex-first uk-flex-last@s">
+			<div>
+				<div class="firstauthor__img">
+					<img src="{{ author1_img | media }}" alt="">
+				</div>
+				<div class="firstauthor__name">{{ author1_name }}
+					<small>{{ author1_podp }}</small>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,34 @@
+fields:
+    title:
+        label: Заголовок
+        span: auto
+        type: text
+    intro:
+        label: Вступление
+        size: ''
+        span: auto
+        type: textarea
+    text:
+        label: 'Текст статьи'
+        size: ''
+        span: auto
+        type: richeditor
+    description:
+        label: 'Текст для SEO'
+        size: ''
+        span: auto
+        type: textarea
+    image:
+        label: Картинка
+        mode: image
+        imageWidth: '150'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    title_tag:
+        label: 'Тэг тайтл'
+        span: auto
+        type: text

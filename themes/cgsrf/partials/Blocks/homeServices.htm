@@ -3,15 +3,11 @@
         <div {{ url ? 'href="{{ url }}"' }} data-service="{{ item.name }}"
         @click="$dispatch('open-modal');
         document.querySelector('#form_service').value = document.querySelector('#form_title').innerHTML = $el.dataset.service;"
-        class="cursor-pointer flex flex-col items-center xl:block xl:w-[370px] wow flipInY">
-            <img src="{{ item.image }}" loading="lazy" alt="{{ item.name }}">
+        class="cursor-pointer flex flex-col items-center xl:block xl:w-[370px] wow fadeIn">
+            <img src="{{ item.image|media }}" loading="lazy" alt="{{ item.name }}">
             <p class="block text-xl font-bold uppercase pt-4">
                 {{ item.name }}
             </p>
         </div>
     {% endfor %}
 </section>
-
-<script>
-
-</script>

@@ -12,7 +12,7 @@
         "rainlab/pages-plugin": "^1.4",
         "rainlab/blog-plugin": "^1.5",
         "ihorchyshkala/dump-plugin": "^1.0",
-        "rainlab/location-plugin": "v1.2.1.1",
+        "rainlab/location-plugin": "v1.2.2",
         "martin/forms-plugin": "^1.5",
         "rainlab/deploy-plugin": "^2.0"
     },

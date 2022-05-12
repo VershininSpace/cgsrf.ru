@@ -13,11 +13,16 @@ code = "main"
 </div>
 <div class="infoline bg-white flex flex-wrap border-b border-gray-300">
     <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+
         <div x-data="{ open: false }">
+
             <button data-code="RU-{{ activeRegion.code }}" id="currentRegion" x-on:click="open = ! open"
             x-ref="selected"
-            class="flex-shrink-0 text-black py-2 px-8 text-lg ">{{
-            activeRegion.name }}</button>
+            class="flex-shrink-0 text-black py-2 pr-8 text-lg flex items-center underline">
+            
+            <svg class="fill-[#11405d] mr-3" role="presentation" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="56" y1="232" x2="200" y2="232" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="104" r="32" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+            
+            {{ activeRegion.name }}</button>
             <div x-cloak x-show="open"
                 class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center">
                 <div class="bg-white relative flex w-[90%] md:w-auto flex-wrap p-10 rounded shadow-md">
@@ -66,14 +71,15 @@ code = "main"
         <ul class="flex space-x-8 uppercase links">
             {% for item in staticMenu.menuItems | slice(0,4) if not item.viewBag.isHidden %}
                 <li role="presentation" class="{{ item.viewBag.cssClass }}">
-                    <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
+                    <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d]' }}">
                         {{ item.title }}
                     </a>
                 </li>
             {% endfor %}
+            {% if staticMenu.menuItems|length > 4 %}
             <li class="group relative">
                 <div class="flex items-center">
-                    <button class="mr-1" type="button">Еще</button>
+                    <button class="mr-1" type="button">ЕЩЕ</button>
                     <svg class="group-hover:hidden" width="16" height="16" viewBox="0 0 15 15" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -91,7 +97,7 @@ code = "main"
                     <ul class="links normal-case text-[#222222] leading-[32px] w-[470px]">
                         {% for item in staticMenu.menuItems | slice(4,auto) if not item.viewBag.isHidden %}
                             <li role="presentation" class="{{ item.viewBag.cssClass }}">
-                                <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d] font-bold' }}">
+                                <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="{{ item.isActive ? 'text-[#11405d]' }}">
                                     {{ item.title }}
                                 </a>
                             </li>
@@ -99,6 +105,7 @@ code = "main"
                     </ul>
                 </div>
             </li>
+            {% endif %}
         </ul>
         <ul class="flex">
             <!-- <li class="mr-2">

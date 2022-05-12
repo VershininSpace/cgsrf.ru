@@ -1086,21 +1086,32 @@ class Controller
                     ? explode(' ', $component)
                     : [$component, $component];
 
-                if (!$componentObj = $manager->makeComponent($name, $this->pageObj, $properties)) {
-                    throw new CmsException(Lang::get('cms::lang.component.not_found', ['name'=>$name]));
+                $componentObj = $manager->makeComponent($name, $this->pageObj, $properties);
+
+                if (!$componentObj) {
+                    $strictMode = Config::get('cms.strict_components', false);
+                    if ($strictMode) {
+                        throw new CmsException(Lang::get('cms::lang.component.not_found', ['name' => $name]));
+                    }
+                    else {
+                        $parameters[$alias] = null;
+                    }
                 }
+                else {
+                    $componentObj->alias = $alias;
 
-                $componentObj->alias = $alias;
+                    $partial->components[$alias] = $componentObj;
 
-                $parameters[$alias] = $partial->components[$alias] = $componentObj;
+                    $parameters[$alias] = $componentObj->makePrimaryAccessor();
 
-                $this->partialStack->addComponent($alias, $componentObj);
+                    $this->partialStack->addComponent($alias, $componentObj);
 
-                $this->parseRouteParamsOnComponent($componentObj, $this->router->getParameters());
+                    $this->parseRouteParamsOnComponent($componentObj, $this->router->getParameters());
 
-                $componentObj->init();
+                    $componentObj->init();
 
-                $this->parseEnvironmentVarsOnComponent($componentObj, $parameters + $this->vars);
+                    $this->parseEnvironmentVarsOnComponent($componentObj, $parameters + $this->vars);
+                }
             }
 
             CmsException::mask($this->page, 300);

@@ -1,0 +1,107 @@
+description = "Шаблон статьи"
+
+[viewBag]
+
+[staticPage]
+useContent = 1
+default = 0
+
+[AppComponent]
+
+[UserData]
+
+[staticMenu]
+code = "mainmenu"
+==
+<?php
+function onStart(){
+$slug = $this->param('slug');
+
+$article = $this->AppComponent->getArticle($slug);
+//$lc = $this->AppComponent->getLastComments();
+$this->title = $this['item']['title'];
+$this['item'] = $article;
+//$this['comments'] = $article['comments'];
+//$this['lc'] = $lc;
+if($article['title_tag']) {
+$this->page->meta_title = $article['title_tag'];
+} else {
+$this->page->meta_title = $article['title'];
+}
+
+$user = $this->UserData->get();
+$this['obUser'] = $user;
+}
+
+function onSendComment(){
+use Chronos\Taminik\Models\Comment;
+
+$comment = new Comment();
+$comment->article_id = Input::get('article_id');
+$comment->name = Input::get('name');
+$comment->content = Input::get('content');
+$comment->save();
+$article = $this->AppComponent->getArticleById(Input::get('article_id'));
+$this['item'] = $article;
+$this['comments'] = $article['comments'];
+//return $comment;
+}
+
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+
+{# Content #}
+
+<section class="tarifs article">
+	<div class="uk-container">
+		{% partial 'pages/inc/_headline' %}
+		<ul class="uk-breadcrumb">
+			<li><a href="{{ url('/') }}"><span>Главная страница</span></a></li>
+			<li><a href="{{ url('/articles') }}"><span>Статьи</span></a></li>
+			<li><span class="uk-active">{{ item.title }}</span></li>
+		</ul>
+		<ul class="uk-grid-match" uk-grid>
+			<li class="uk-width-3-4@s">
+				<div>
+					<div class="article__title">{{ item.title }}</div>
+					<div class="article__intro">{{ item.intro }}</div>
+					{% if (obUser) %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-url="https://eqclub.ru/articles/{{ item.slug }}?ref=ei{{ obUser.id }}"></div>
+					{% else %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram"></div>
+					{% endif %}
+					{% if item.image.path %}
+						<div class="article__image">
+							<img src="{{ item.image.path }}" alt="">
+						</div>
+					{% endif %}
+					<div class="article__content">
+						{{ item.text | raw }}
+					</div>
+					{% if (obUser) %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-url="https://eqclub.ru/articles/{{ item.slug }}?ref=ei{{ obUser.id }}"></div>
+					{% else %}
+					<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram"></div>
+					{% endif %}
+					<div id="vk_comments"></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+
+
+{% put scr %}
+	<script>
+    VK.Widgets.Comments("vk_comments", {limit: 15, attach: "*"});
+	</script>
+	<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+	<script src="https://yastatic.net/share2/share.js"></script>
+{% endput %}
+
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}

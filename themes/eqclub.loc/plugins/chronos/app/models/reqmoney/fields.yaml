@@ -1,0 +1,31 @@
+fields:
+    total:
+        label: Сумма
+        span: auto
+        type: text
+    status:
+        label: Статус
+        options:
+            Новый: Новый
+            'В обработке': 'В обработке'
+            Исполнен: Исполнен
+            'Исполнен частично': 'Исполнен частично'
+        showSearch: true
+        span: auto
+        type: dropdown
+    is_accepted:
+        label: Принят
+        span: auto
+        type: switch
+    user:
+        label: Пользователь
+        nameFrom: user_datas
+        descriptionFrom: description
+        span: auto
+        type: relation
+    is_closed:
+        label: Закрыт
+        span: auto
+        readOnly: 1
+        hidden: 1
+        type: switch

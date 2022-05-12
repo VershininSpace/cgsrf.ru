@@ -1,0 +1,13 @@
+columns:
+    code:
+        label: Код
+        type: text
+    amount:
+        label: 'Сумма %'
+        type: text
+    is_active:
+        label: Активный
+        type: switch
+    is_secret:
+        label: 'В обход оплаты'
+        type: switch

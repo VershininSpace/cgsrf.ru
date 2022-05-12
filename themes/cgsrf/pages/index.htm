@@ -1,9 +1,14 @@
-url = "/"
+url = "/sdfvdf"
 layout = "default"
 title = "Главная"
 
 [LocationPicker]
 ==
+{#
+{variable name="title1block" label="Описание 1 блока" tab="1 Блок" type="text"}{/variable}
+{variable name="description1block" label="Описание 1 блока" tab="1 Блок" type="rechieditor"}{/variable}
+#}
+
 {% partial "Blocks/Map" %}
 
 <section class="wow pulse container mx-auto px-4 xl:px-0 text-center xl:text-left xl:grid grid-cols-3 gap-8 py-16">
@@ -75,7 +80,3 @@ title = "Главная"
 },
 } %}
 {% partial "Blocks/homeServices" items=serives2 %}
-
-
- 
-

@@ -1,0 +1,12 @@
+list: $/chronos/app/models/promocode/columns.yaml
+modelClass: Chronos\App\Models\Promocode
+title: Promocodes
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'chronos/app/promocodes/update/:id'

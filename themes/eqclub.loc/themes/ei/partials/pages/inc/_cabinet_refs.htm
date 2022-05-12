@@ -1,0 +1,8 @@
+<div class="cabrefs">
+	<h4>Рефералы</h4>
+	{% if  obUser.arModelData.childrens | length > 0 %}
+	<account-refs :children_count="{{ obUser.arModelData.children_count | json_encode }}" :items="{{ obUser.arModelData.childrens|json_encode()}}"></account-refs>
+	{% else %}
+		<p>Вы пока никого не пригласили</p>
+	{% endif %}
+</div>

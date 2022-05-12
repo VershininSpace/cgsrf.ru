@@ -1,0 +1,22 @@
+/*========= Colors ========*/
+/* Main colors */
+$color-main: #57b846;
+$color1: #FAFAFA;
+$color2: #2E2E2E;
+$color3: #384650;
+$color4: #7D8992;
+$color5: #80C74B;
+$color6: #001635;
+
+
+/* Buttons */
+$button-color: $color-main;
+$button-text-color: $color4;
+
+/* Common */
+$container-width: 1130;
+
+@import "mixins";
+@import "extends";
+@import "modalsconfig";
+@import "buttonsconfig";

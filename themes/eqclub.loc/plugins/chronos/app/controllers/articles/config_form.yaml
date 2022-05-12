@@ -1,0 +1,10 @@
+name: Articles
+form: $/chronos/app/models/article/fields.yaml
+modelClass: Chronos\App\Models\Article
+defaultRedirect: chronos/app/articles
+create:
+    redirect: 'chronos/app/articles/update/:id'
+    redirectClose: chronos/app/articles
+update:
+    redirect: chronos/app/articles
+    redirectClose: chronos/app/articles

@@ -1,0 +1,10 @@
+name: Comments
+form: $/chronos/app/models/comment/fields.yaml
+modelClass: Chronos\App\Models\Comment
+defaultRedirect: chronos/app/comments
+create:
+    redirect: 'chronos/app/comments/update/:id'
+    redirectClose: chronos/app/comments
+update:
+    redirect: chronos/app/comments
+    redirectClose: chronos/app/comments

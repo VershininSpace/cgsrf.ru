@@ -1,0 +1,68 @@
+description = "Шаблон главной страницы"
+
+[viewBag]
+
+[staticPage]
+useContent = 1
+default = 0
+
+[staticMenu]
+code = "mainmenu"
+
+[UserData]
+
+[AppComponent]
+==
+<?php
+function onStart(){
+$user = $this->UserData->get();
+$this['obUser'] = $user;
+}
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+{# ==== Variables ====== #}
+{# About #}
+{variable name="mp_about" label="О чем это вообще" tab="О чем это" type="richeditor"}{/variable}
+{# History #}
+{variable name="history" label="История" tab="История" type="richeditor"}{/variable}
+{# Authors #}
+{variable name="author1_img" label="Фото автора 1" tab="Авторы" type="mediafinder" mode="image"}{/variable}
+{variable name="author1_name" label="Имя автора 1" tab="Авторы" type="text"}{/variable}
+{variable name="author1_podp" label="Подпись автора 1" tab="Авторы" type="text"}{/variable}
+{variable name="author1_desc" label="Описание автора 1" tab="Авторы" type="richeditor"}{/variable}
+{repeater name="authors" tab="Авторы" prompt="Добавить еще" }
+{variable name="image" label="Картинка" type="mediafinder" mode="image"}{/variable}
+{variable name="title" label="Заголовок" type="text"}{/variable}
+{variable name="podp" label="Подпись" type="text"}{/variable}
+{variable name="link1" label="Ссылка ВК" type="text"}{/variable}
+{variable name="link2" label="Ссылка Инстаграм" type="text"}{/variable}
+{variable name="desc" label="Описание" type="richeditor"}{/variable}
+{/repeater}
+{# Know #}
+{variable name="know1" label="Узнаешь 1" tab="Причины" type="text"}{/variable}
+{variable name="know2" label="Узнаешь 2" tab="Причины" type="text"}{/variable}
+{repeater name="knows" tab="Причины" prompt="Добавить еще" }
+{variable name="title" label="Заголовок" type="text"}{/variable}
+{/repeater}
+{# OTZ #}
+{repeater name="videos" tab="Видео отзывы" prompt="Добавить еще" }
+{variable name="title" label="Ссылка" type="text"}{/variable}
+{/repeater}
+
+{#Gallery#}
+{repeater name="gallery" tab="Галерея" prompt="Добавить еще" }
+{variable name="image" label="Картинка" type="mediafinder" mode="image"}{/variable}
+{/repeater}
+
+{# Content #}
+{% partial 'pages/first.htm' %}
+
+
+
+
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}

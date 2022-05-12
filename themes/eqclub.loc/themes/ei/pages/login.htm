@@ -1,0 +1,19 @@
+title = "Вход в личный кабинет"
+url = "/login"
+layout = "static/account"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 1
+logged_only = 0
+
+[Login]
+mode = "ajax"
+flash_on = 1
+redirect_on = 1
+redirect_page = "cabinet"
+
+[rolesAccess]
+redirectAuth = "cabinet"
+==
+<account-login :url="{{ url('/')|json_encode()}}"></account-login>

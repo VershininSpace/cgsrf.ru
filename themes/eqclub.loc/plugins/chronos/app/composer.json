@@ -1,0 +1,6 @@
+{
+    "require": {
+        "yandex-money/yandex-money-sdk-php": " 3.0.*",
+        "qiwi/bill-payments-php-sdk": "^0.1.2"
+    }
+}

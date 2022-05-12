@@ -1,0 +1,10 @@
+name: Products
+form: $/chronos/app/models/product/fields.yaml
+modelClass: Chronos\App\Models\Product
+defaultRedirect: chronos/app/products
+create:
+    redirect: 'chronos/app/products/update/:id'
+    redirectClose: chronos/app/products
+update:
+    redirect: chronos/app/products
+    redirectClose: chronos/app/products

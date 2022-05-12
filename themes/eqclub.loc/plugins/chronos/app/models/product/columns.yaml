@@ -1,0 +1,13 @@
+columns:
+    title:
+        label: Заголовок
+        type: text
+    intro:
+        label: Вступление
+        type: text
+    price:
+        label: Стоимость
+        type: text
+    percent:
+        label: Процент
+        type: text

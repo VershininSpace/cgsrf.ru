@@ -1,0 +1,10 @@
+name: Roles
+form: $/chronos/app/models/role/fields.yaml
+modelClass: Chronos\App\Models\Role
+defaultRedirect: chronos/app/roles
+create:
+    redirect: 'chronos/app/roles/update/:id'
+    redirectClose: chronos/app/roles
+update:
+    redirect: chronos/app/roles
+    redirectClose: chronos/app/roles

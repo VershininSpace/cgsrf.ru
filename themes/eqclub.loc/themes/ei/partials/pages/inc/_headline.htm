@@ -1,0 +1,39 @@
+<div class="headline">
+	<ul class="headline__nav">
+		{% for men in staticMenu.menuItems %}
+			<li class="{{ (men.isActive) ? 'uk-active' : '' }}">
+				<a href="{{ men.url }}">{{ men.title }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+	<div class="headline__right">
+		{#<div class="headline__phone">
+			<a href="">
+				<img src="{{ 'assets/img/head_phone.svg' | theme }}" alt="">
+			</a>
+		</div>#}
+		<div class="headline__user">
+			{% if obUser.isNotEmpty %}
+				<span class="uk-visible@s">{{ obUser.name }}</span>
+			{% else %}
+				<span class="uk-visible@s">Личный кабинет</span>
+			{% endif %}
+
+
+			<img src="{{ 'assets/img/head_user.svg' | theme }}" alt="">
+			<div uk-dropdown="mode: hover; pos: top-right" id="ui-dropdown">
+				<ul class="uk-nav uk-dropdown-nav">
+					{% if obUser.isNotEmpty %}
+						<li class=""><a onclick="lkopen()" href="{{ url('/login') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>В личный кабинет</a></li>
+						<li class="uk-nav-divider"></li>
+						<li><a href="{{ url('/logout') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Выйти</a></li>
+					{% else %}
+						<li class=""><a href="{{ url('/login') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-in"></span>Войти в систему</a></li>
+						<li class="uk-nav-divider"></li>
+						<li><a href="{{ url('/register') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>Зарегистрироваться</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

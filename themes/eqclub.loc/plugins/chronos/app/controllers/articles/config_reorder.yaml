@@ -1,0 +1,4 @@
+title: Articles
+modelClass: Chronos\App\Models\Article
+toolbar:
+    buttons: reorder_toolbar

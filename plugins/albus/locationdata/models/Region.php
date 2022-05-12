@@ -22,12 +22,18 @@ class Region extends Model
         'logo' => 'System\Models\File'
     ];
 
-    public function getDefault($attribute = null) {
+    /**
+     * Получить регион по умолчанию или его атрибут
+     */
+
+    public static function getDefault($attribute = null) {
+
         $default = (object)[$attribute => null ];
         $item = self::whereId(Setting::get('default_region'))->first();
         if(!$item) {
             $item = $default;
         }
         return $attribute === null ? $item : $item->$attribute;
+
     }
 }

@@ -1,0 +1,56 @@
+description = "Шаблон личных кабинетов"
+
+[UserData]
+
+[staticPage]
+useContent = 1
+default = 0
+
+[staticMenu mainMenu]
+code = "mainmenu"
+
+[staticBreadcrumbs]
+
+[AppComponent]
+==
+<?php
+function onStart(){
+$this['url'] = $this->page->id;
+$user = $this->UserData->get();
+//dd($user);
+//dd($this->UserData->get());
+$this['obUser'] = $user;
+if($user){
+$this['payments'] = $this->CommerceComponent->checkPayments();
+//$this->AppComponent->clearUser();
+$user = $this->UserData->get();
+$this['obUser'] = $user;
+$this['products'] = $this->AppComponent->getProducts($user->products);
+$this['transactions'] = $this->AppComponent->getUserTransactions();
+$this['roles'] =  $this->AppComponent->getRoles();
+$this['parent_user'] = $this->AppComponent->getUserById($user->parent_id);
+
+//dd($this['payments']);
+//dd($this['roles']);
+}
+//dd($this['products']);
+//dd(json_encode($user->arModelData()['childrens']));
+}
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+{# ==== Variables ====== #}
+
+
+{# Content #}
+{% partial 'pages/cabinet.htm' %}
+
+{% partial 'site/footer.htm' %}
+
+
+
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}

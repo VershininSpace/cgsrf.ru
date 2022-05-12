@@ -1,0 +1,70 @@
+<section class="uk-section cabinet">
+	<div class="cabinet__title">ПАРТНЕРСКАЯ ПРОГРАММА КЛУБА ЗДОРОВОЕ МЫШЛЕНИЕ</div>
+	<div class="cabinet__head">
+		<div class="uk-container">
+			<div class="cabinet__balance">
+				<div class="cabinet__reverse">
+					<a href="/">На главную</a>
+				</div>
+				<div class="cabinet__now">
+					{{ obUser.balance }} ₽
+					<small>Ваш текущий баланс</small>
+					{#<a href="#" uk-toggle="target: #getpaymodal">Вывести деньги</a>#}
+				</div>
+				<div class="cabinet__totl">{{ obUser.total }} ₽
+					<small>Всего заработано:</small>
+				</div>
+			</div>
+			<ul class="cabinet__nav">
+				<li>
+					<div class="cabinet__user"><span>{{ obUser.name }}</span>
+						<small>{{ obUser.role.name }}</small>
+					</div>
+				</li>
+				{#<li>
+					<a href="" uk-tooltip="Поделиться ссылкой" @click.prevent="testPercent()">
+						<div class="cabinet__ico cabinet__ico--1"><img src="{{ 'assets/img/ico-c-top1.svg' | theme }}" alt=""></div>
+					</a>
+				</li>
+				<li>
+					<a href="" uk-tooltip="Обновить данные" @click.prevent="clearUserCache()">
+						<div class="cabinet__ico cabinet__ico--2"><img src="{{ 'assets/img/ico-c-top2.svg' | theme }}" alt=""></div>
+					</a>
+				</li>#}
+				<li>
+					<a href="{{ url('/logout') }}" uk-tooltip="Выйти из аккаунта">
+						<div class="cabinet__ico cabinet__ico--3"><img src="{{ 'assets/img/ico-c-top3.svg' | theme }}" alt=""></div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="uk-container">
+		<div class="cabinet__ref container_ref">
+			<qr-code text="{{ url('/') }}?ref=ei{{ obUser.id }}" :size=200 class="left_ref"></qr-code>
+			<div class="right_ref">
+			<p>Ссылка на тренинг: <br class="uk-hidden@s"><b><a href="{{ url('/') }}?ref=ei{{ obUser.id }}">{{ url('/') }}?ref=ei{{ obUser.id }}</a></b></p>
+			<p>Ссылка на бесплатный вебинар: <b><a href="{{ url('/webinar') }}?ref=ei{{ obUser.id }}">{{ url('/webinar') }}?ref=ei{{ obUser.id }}</a></b></p>
+			<p>Ссылка на курс: <b><a href="{{ url('/tarifs') }}?ref=ei{{ obUser.id }}">{{ url('/tarifs') }}?ref=ei{{ obUser.id }}</a></b></p>
+			</div>
+		</div>
+		{% partial 'pages/inc/_cabinet_content.htm' %}
+	</div>
+	</div>
+</section>
+
+{#
+<div id="getpaymodal" class="uk-flex-top" uk-modal="">
+	<div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body modal">
+		<button class="uk-modal-close-default uk-close-large" type="button" uk-close=""></button>
+		<h2 class="uk-modal-title">Вывести деньги</h2>
+		<p>Минимальная сумма вывода -
+			<strong>3 000 руб</strong>. Деньги выводятся в течении 48 часов на Qiwi-кошелек. Комиссия за вывод - 3%</p>
+		<form class="js_form myform uk-form" data-request="onRequestMoney"
+		      data-request-success="console.log(data); UIkit.modal('#getpaymodal').hide()">
+			<input class="uk-input" placeholder="Номер Qiwi-кошелька *" type="text" required="" name="qiwi" />
+			<input class="uk-input" placeholder="Какую сумму вы хотите вывести *" type="text" required="" name="summa" />
+			<button class="uk-button uk-button-primary uk-width-1-1" type="submit">Отправить запрос</button>
+		</form>
+	</div>
+</div>#}

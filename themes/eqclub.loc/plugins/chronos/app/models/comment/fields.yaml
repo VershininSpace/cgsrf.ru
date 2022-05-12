@@ -1,0 +1,9 @@
+fields:
+    content:
+        label: 'Текст комментария'
+        span: auto
+        type: text
+    name:
+        label: Имя
+        span: auto
+        type: text

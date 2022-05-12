@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: id
+        type: number
+    created_at:
+        label: Создан
+        type: datetime
+    user:
+        label: Пользователь
+        type: partial
+        relation: user
+        path: ~/plugins/chronos/app/models/_user_column.htm
+    total:
+        label: Всего
+        type: text
+    status:
+        label: Статус
+        type: text
+    is_accepted:
+        label: Принят
+        type: switch

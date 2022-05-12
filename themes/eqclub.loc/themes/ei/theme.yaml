@@ -1,0 +1,35 @@
+name: 'Эмоциональный Интеллект'
+description: ''
+author: Chronos
+homepage: ''
+code: ''
+form:
+    fields:
+        site_name:
+            label: Название сайта
+            comment: Название сайта
+        phone:
+            label: Телефон
+            comment: Основной телефон
+        email:
+            label: Email
+            comment: Почта
+        qiwi_private:
+            label: Qiwi приватный ключ
+            comment: Qiwi приватный ключ
+        qiwi_public:
+            label: Qiwi публичный ключ
+            comment: Qiwi публичный ключ
+        vk:
+            label: VK
+            comment: Вконтакте
+        inst:
+            label: Instagram
+        fb:
+            label: Facebook
+        confid:
+            label: Политика Конфиденциальности
+            type: richeditor
+        address:
+            label: Адрес
+            type: richeditor 

@@ -1,0 +1,44 @@
+fields:
+    title:
+        label: Заголовок
+        span: auto
+        type: text
+    price:
+        label: Цена
+        span: auto
+        type: text
+    code:
+        label: 'Код продукта'
+        span: auto
+        type: text
+    sort_order:
+        label: Сортировка
+        span: auto
+        type: text
+    percent:
+        label: 'Процент в сеть'
+        span: auto
+        type: text
+    video:
+        label: 'Видео. Только ID'
+        span: auto
+        type: text
+    link:
+        label: 'Ссылка для перенаправления'
+        span: auto
+        type: text
+    intro:
+        label: Вступление
+        size: ''
+        span: auto
+        type: textarea
+    is_webinar:
+        label: 'Является вебинаром'
+        span: auto
+        default: 0
+        type: checkbox
+    desc:
+        label: Описание
+        span: full
+        type: richeditor
+        size: large

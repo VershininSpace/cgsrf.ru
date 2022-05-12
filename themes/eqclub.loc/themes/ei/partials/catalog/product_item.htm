@@ -1,0 +1,33 @@
+<div class="tarifs__item">
+	<div class="tarifs__wrap">
+		<div class="tarifs__content">
+			<h2 class="buy__title"><a href="{{ url('/tarifs') }}/{{ prod.slug }}">{{ product.title }}</a></h2>
+			<div class="tarifs__intro">{{ product.intro | raw }}</div>
+
+			<div class="tarifs__readmore">
+				<a class="uk-button uk-button-text" href="{{ url('/tarifs') }}/{{ prod.slug }}">Читать подробное описание</a>
+			</div>
+		</div>
+		<div class="tarifs__footer">
+			<div class="tarifs__price">
+				<small>Стоимость:</small>{{ product.price }}</div>
+			<div class="tarifs__button">
+    			{% if (obUser) %}										
+    				{% if product.link %}
+                        {% if obUser.hasProduct(product.id) %}
+    					<a href="{{ product.link }}" class="uk-button uk-button-primary" target="_blank">Перейти</a>
+                        {% else %}
+    					<a href="#" class="uk-button uk-button-primary" uk-toggle="target: #product-modal">Купить</a>
+                        {% endif %}
+    				{% else %}
+    					<a href="#" class="uk-button uk-button-primary" uk-toggle="target: #product-modal">Купить</a>
+                    {% endif %}
+    			{% else %}
+    					<a href="#" class="uk-button uk-button-primary" uk-toggle="target: #product-modal">Купить</a>
+    			{% endif %}
+				{#<a href="" class="uk-button uk-button-primary" @click="buymodal(1, '{{ prod.code }}', 'КУПИТЬ', {{ prod | json_encode }})" uk-toggle="target: #buymodal2">КУПИТЬ</a>#}
+					{#<inner-buy id="{{ product.id }}" price="{{ product.price }}" name="{{ product.title }}"></inner-buy>#}
+			</div>
+		</div>
+	</div>
+</div>

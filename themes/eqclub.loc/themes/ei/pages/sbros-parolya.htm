@@ -1,0 +1,18 @@
+title = "Сброс пароля"
+url = "/user/password/restore/:code"
+layout = "static/account"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[ResetPassword]
+slug = "{{ :code }}"
+slug_required = 1
+mode = "ajax"
+flash_on = 1
+redirect_on = 1
+redirect_page = "login"
+==
+<account-reset :url="{{ url('/')|json_encode()}}"></account-reset>

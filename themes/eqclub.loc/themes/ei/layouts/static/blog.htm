@@ -1,0 +1,94 @@
+description = "Шаблон категории"
+
+[viewBag]
+
+[staticPage]
+useContent = 1
+default = 0
+
+[AppComponent]
+
+[staticMenu]
+code = "mainmenu"
+
+[UserData]
+==
+<?php
+function onStart(){
+$this->page->meta_title = $this->page->title;
+$this['items'] = $this->AppComponent->getArticles();
+$user = $this->UserData->get();
+$this['obUser'] = $user;
+//dump($this['items']);
+//echo 'asd';
+//$this->title = $this['cat']['title'];
+//$this['slug'] = $slug;
+}
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+
+{# Content #}
+<section class="uk-section tarifs blog">
+
+	<div class="uk-container">
+		{% partial 'pages/inc/_headline' %}
+		<h1>Статьи</h1>
+		{#<div class="breadcrumbs">
+			<div class="uk-container">
+				<ul>
+					<li><a href="{{ url('/') }}">Главная</a></li>
+					<li>Статьи</li>
+				</ul>
+			</div>
+		</div>#}
+
+
+		<ul class="blog_list">
+			{% for bl in items %}
+				<li class="blog_list__item">
+					<div class="blog_list__img">
+						<a href="{{ url('/articles') }}/{{ bl.slug }}">
+							{% if bl.image.path %}
+								<img src="{{ bl.image.path }}" alt="">
+							{% else %}
+								<img src="{{ 'assets/img/nophoto.png' | theme }}" alt="">
+							{% endif %}
+						</a>
+					</div>
+					<div class="blog_list__wrap">
+						<div class="blog_list__title">
+							<a href="{{ url('/articles') }}/{{ bl.slug }}">{{ bl.title }}</a></div>
+						<div class="blog_list__intro">{{ bl.intro }}</div>
+						<div class="blog_list__footer">
+							<a href="{{ url('/articles') }}/{{ bl.slug }}">Читать полностью</a>
+							<div class="blog_list__date">
+								<img src="{{ 'assets/img/blog-date.svg' | theme }}" alt="">
+								{{ bl.created_at }}
+							</div>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+
+		{% if items.lastPage > 1 %}
+			<ul class="uk-pagination" uk-margin>
+
+				{% for page in 1..items.lastPage %}
+					<li class="{{ items.currentPage == page ? 'uk-active' : '' }}">
+						<a href="{{ url('/blog') }}/?page={{ page }}"><span>{{ page }}</span></a>
+					</li>
+				{% endfor %}
+
+			</ul>
+		{% endif %}
+	</div>
+
+</section>
+
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}

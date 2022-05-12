@@ -1,0 +1,17 @@
+fields:
+    code:
+        label: Код
+        span: auto
+        type: text
+    amount:
+        label: Сумма
+        span: auto
+        type: text
+    is_active:
+        label: Активный
+        span: auto
+        type: switch
+    is_secret:
+        label: 'В обход оплаты'
+        span: auto
+        type: switch

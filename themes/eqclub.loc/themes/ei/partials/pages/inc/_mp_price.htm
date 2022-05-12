@@ -1,0 +1,27 @@
+<section class="uk-section fs-price" id="price">
+	<div class="uk-container uk-position-relative">
+		<h1>Стоимость спецкурса</h1>
+		<div class="fs-price__intro">
+			Посетить спецкурс могут все желающие. Занятия проходят по средам с 19 до 22 часа. Для того, чтобы купить билет, вам необходимо зарегистрироваться в Клубе Здорового Мышления по рекомендации одного из участников и купить первую ступень курса за 3 000 рублей. При этом вы получите:
+		</div>
+		<ol class="fs-price__spis">
+			<li>Доступ к оффлайн лекции.</li>
+			<li>Видео курса.</li>
+			<li>Реферальную ссылку клуба</li>
+		</ol>
+		<div class="fs-price__img2 uk-hidden@s" uk-parallax="x: -20">
+			<img src="{{ 'assets/img/queue.svg' | theme }}" alt="">
+		</div>
+		<div class="fs-price__accia">
+			<h4>АКЦИЯ!</h4>
+			<p>Для тех, кто хочет прийти со своей второй половиной или с деловым партнером: 2 билета по цене одного!</p>
+		</div>
+		<div class="fs-price__button">
+			{#<a href="{{ url('/register') }}" class="uk-button uk-button-primary">Купить билет на спецкурс</a>#}
+			<a href="#" @click="buymodal(1, 'first', 'Купить билет на спецкурс')" uk-toggle="target: #buymodal" class="uk-button uk-button-primary">Купить билет на спецкурс</a>
+		</div>
+		<div class="fs-price__img1 uk-visible@s" uk-parallax="x: -30;media: @s">
+			<img src="{{ 'assets/img/queue.svg' | theme }}" alt="">
+		</div>
+	</div>
+</section>

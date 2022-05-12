@@ -1,0 +1,19 @@
+{#MODALS#}
+{% partial 'system/modals.htm' %}
+
+{# FOOTER #}
+{# {% partial 'site/footer' %} #}
+<wait :wait="wait"></wait>
+</div>
+</div>
+
+<!-- Scripts -->
+{#<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>#}
+{#<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.1/moment-with-locales.min.js"></script>#}
+<script src="{{ 'assets/js/manifest.js?'|theme }}{{ random(1, 9999) }}"></script>
+<script src="{{ 'assets/js/vendor.js?'|theme }}{{ random(1, 9999) }}"></script>
+<script src="{{ 'assets/js/app.js?'|theme }}{{ random(1, 9999) }}"></script>
+{% scripts %}
+{% placeholder scr %}
+</body>
+</html>

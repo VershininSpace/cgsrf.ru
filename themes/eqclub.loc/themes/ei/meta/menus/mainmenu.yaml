@@ -1,0 +1,50 @@
+items:
+    -
+        title: Тренинг
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: index-2
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Бесплатный вебинар'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: webinar
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Продукты
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: tarifs
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Статьи
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: stati
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Главное меню'

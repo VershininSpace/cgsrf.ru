@@ -1,0 +1,83 @@
+description = "Шаблон страницы вебинара"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[staticMenu]
+code = "mainmenu"
+
+[UserData]
+
+[AppComponent]
+==
+<?php
+use Chronos\App\Models\Product;
+
+function onStart(){
+	$user = $this->UserData->get();
+	$this['obUser'] = $user;
+	$this['products'] = Product::isWebinar()->get();
+}
+?>
+==
+{# HEAD #}
+{% partial 'system/head.htm' %}
+
+{# ==== Variables ====== #}
+{variable name="youtube" label="Видео" tab="Основное" type="text"}{/variable}x
+{# Content #}
+<section class="uk-section webinar">
+	<div class="uk-container">
+		{% partial 'pages/inc/_headline' %}
+		<h1>{{ page.title }}</h1>
+		<ul class="uk-child-width-1-1@m uk-grid-match" uk-grid>
+			{% for product in products %}
+				<li>
+					{% partial 'catalog/product_item' product=product %}
+				</li>
+			{% endfor %}
+		</ul>
+		{#
+		<div class="webinar__content" v-if="webinar_access">
+			<div class="webinar__video">
+				<iframe width="100%" height="600" src="https://www.youtube.com/embed/{{ youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			<div class="webinar__desc">{% page %}</div>
+			<h4>Продукты:</h4>
+			<ul class="uk-child-width-1-1@m uk-grid-match wp" uk-grid>
+				{% for prod in products %}
+					<li class="wp__bl">
+						<div class="wp__item">
+							<div class="wp__wrap">
+								<div class="wp__content">
+									<div class="wp__title">{{ prod.title }}</div>
+									<div class="wp__desc">{{ prod.intro | raw }}</div>
+								</div>
+								<div class="wp__footer">
+									<div class="wp__price">
+										<small>Стоимость:</small>{{ prod.price }} руб
+									</div>
+									<div class="wp__button">
+										<a href="" class="uk-button uk-button-primary" @click="buymodal(1, '{{ prod.code }}', 'КУПИТЬ', {{ prod | json_encode }})" uk-toggle="target: #buymodal2">КУПИТЬ</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="" v-else>
+			<div class="access">
+				<div class="access__title">Для доступа к вебинару введите своё имя, емейл и телефон</div>
+				<enter-webinar :buymodal="{ pay: 0, webinar: 1 }"></enter-webinar>
+			</div>
+		</div>
+		#}
+	</div>
+</section>
+{#<buy-modal2 :buymodal="paymodal" :product="paymodal.product"></buy-modal2>#}
+
+{# HEAD #}
+{% partial 'system/foot.htm' %}
