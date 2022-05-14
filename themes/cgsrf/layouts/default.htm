@@ -12,6 +12,20 @@ recaptcha_size = "normal"
 emails_date_format = "Y-m-d"
 
 [LocationPicker]
+
+[LeaveRreview]
+SuccessSend = "Спасибо! Отзыв успешно отправлен"
+ErrorSend = "Отзыв не был отправлен"
+addstyles = 1
+HideLabel = 0
+NameLabel = "Имя"
+PhoneLabel = "Телефон"
+EmailLabel = "Email"
+ThemeLabel = "Тема"
+TextLabel = "Текст отзыва"
+RatingLabel = "Поставьте вашу оценку"
+ButtonClasses = "submit"
+ButtonText = "Отправить"
 ==
 <?php
 // function onStart() {
@@ -28,6 +42,7 @@ emails_date_format = "Y-m-d"
 
 <body class="text-[#222222]">
 	{% partial "Site/Header" %}
+	{% partial "Site/Breadcrumbs" %}
 	<main>
 		{% page %}
 	</main>

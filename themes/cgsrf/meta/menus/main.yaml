@@ -1,9 +1,22 @@
 items:
     -
         title: STATIC
+        nesting: null
         type: all-static-pages
+        url: null
         code: ''
+        reference: null
+        cmsPage: null
         replace: 1
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Отзывы
+        type: cms-page
+        code: ''
+        reference: reviews
         viewBag:
             isHidden: '0'
             cssClass: ''

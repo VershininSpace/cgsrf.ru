@@ -35,7 +35,14 @@ class Plugin extends PluginBase
                 try {
                     $json = Http::get('http://ip-api.com/json/' . $_SERVER['REMOTE_ADDR'] );
                     $data = json_decode($json);
-                    Session::put("Region", $data->region);
+
+                    if (Region::whereCode($data->region)->first()) {
+                        Session::put("Region", $data->region);
+                    } else {
+                        $region = (new Region)->getDefault('code');
+                        Session::put("Region", $region);
+                    }
+                    
                 } catch (\Exception $e) {
                     $region = (new Region)->getDefault('code');
                     Session::put("Region", $region);

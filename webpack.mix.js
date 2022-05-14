@@ -25,6 +25,7 @@ mix.setPublicPath(paths.dist)
 // .copyDirectory(`${paths.src}/images`, `${paths.dist}/images`)
 .browserSync({
     watch: true,
+    notify : false,
     proxy: {
         target: "http://gazprom.loc/"
     }

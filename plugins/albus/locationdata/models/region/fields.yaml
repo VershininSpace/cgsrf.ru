@@ -91,6 +91,26 @@ fields:
                         type: fileupload
                         fileTypes: svg, ico, jpg, jpeg, png, webp
 
+                    flamp_reviews:
+                        tab: Отзывы
+                        label: Flamp
+                        span: auto
+                        type: text
+                    two_gis_reviews:
+                        tab: Отзывы
+                        label: 2gis
+                        span: auto
+                        type: text
+                    yandex_reviews:
+                        tab: Отзывы
+                        label: Yandex
+                        span: auto
+                        type: text
+                    google_reviews:
+                        tab: Отзывы
+                        label: Google
+                        span: auto
+                        type: text
 
     # optionsSection:
     #     type: section

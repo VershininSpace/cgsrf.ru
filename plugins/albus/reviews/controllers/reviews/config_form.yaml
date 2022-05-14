@@ -1,0 +1,10 @@
+name: Редактирование отзыва
+form: $/albus/reviews/models/review/fields.yaml
+modelClass: Albus\Reviews\Models\Review
+defaultRedirect: albus/reviews/reviews
+create:
+    redirect: 'albus/reviews/reviews/update/:id'
+    redirectClose: albus/reviews/reviews
+update:
+    redirect: albus/reviews/reviews
+    redirectClose: albus/reviews/reviews

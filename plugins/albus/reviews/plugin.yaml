@@ -1,0 +1,16 @@
+plugin:
+    name: 'albus.reviews::lang.plugin.name'
+    description: 'albus.reviews::lang.plugin.description'
+    author: Albus
+    icon: oc-icon-star
+    homepage: ''
+navigation:
+    reviews:
+        label: Отзывы
+        url: albus/reviews/reviews
+        icon: icon-star
+        iconSvg: plugins/albus/reviews/assets/images/reviews.svg
+permissions:
+    full:
+        tab: 'albus.reviews::lang.Модерация отзывов'
+        label: 'albus.reviews::lang.Модерация отзывов'

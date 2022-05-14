@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table albus_reviews_reviews'
+    - builder_table_create_albus_reviews_reviews.php

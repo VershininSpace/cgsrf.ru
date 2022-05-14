@@ -1,0 +1,4 @@
+title: Изменение порядка отзывов
+modelClass: Albus\Reviews\Models\Review
+toolbar:
+    buttons: reorder_toolbar

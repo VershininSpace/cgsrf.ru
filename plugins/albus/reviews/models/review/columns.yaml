@@ -1,0 +1,60 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    unread:
+        type: partial
+        label: Статус
+    name:
+        label: ФИО
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: Телефон
+        type: number
+        searchable: true
+        sortable: true
+    email:
+        label: E-mail
+        type: text
+        searchable: true
+        sortable: true
+    title:
+        label: Название
+        type: text
+        searchable: true
+        sortable: true
+    content:
+        label: Содержание
+        type: text
+        searchable: true
+        sortable: true
+    rating:
+        label: Рейтинг
+        sortable: true
+    published:
+        label: Показан
+        sortable: true
+        type: partial
+    source:
+        label: Источник
+        type: selectable
+        sortable: false
+        options:
+            web: Форма на сайте
+            whatsapp: WhatsApp
+            other: Другое
+    created_at:
+        label: 'Дата создания'
+        type: datetime
+        searchable: true
+        sortable: true
+        format: 'd.m.Y H:i:s'
+    published_at:
+        label: 'Дата публикации'
+        type: date
+        searchable: true
+        sortable: true

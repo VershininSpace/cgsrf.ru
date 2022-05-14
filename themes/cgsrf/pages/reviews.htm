@@ -1,0 +1,68 @@
+url = "/reviews"
+layout = "default"
+title = "Отзывы"
+==
+<section class="text-gray-600 body-font relative">
+	<div class="container px-5 py-24 mx-auto">
+		<h2 class="font-extrabold text-3xl xl:text-6xl mb-6">Оцентите нашу работу!</h2>
+
+        <form id="contact_form" class="mb-5" x-data="review_form" @submit.prevent="submit">
+            <div class="bg-blue-500 p-4 fixed top-[20px] right-[20px] rounded-2xl text-white font-bold" x-transition:enter.duration.500ms x-show.transition="show" x-text="message"></div>
+            {{ form_token() }}
+            <div>
+                <div class="rounded-3xl font-bold" x-transition:enter.duration.500ms x-text="message"></div>
+                <div class="relative mb-4">
+                    <label for="name" class="leading-7 text-sm text-gray-600">Ваше имя</label>
+                    <input type="text" id="name" name="name"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <div class="relative mb-4">
+                    <label for="rating" class="leading-7 text-sm text-gray-600">Рейтинг</label>
+                    <input type="number" value="1" id="rating" name="rating"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <div class="relative mb-4">
+                    <label for="phone" class="leading-7 text-sm text-gray-600">Телефон</label>
+                    <input type="phone" id="phone" required name="phone"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <div class="relative mb-4">
+                    <label for="content" class="leading-7 text-sm text-gray-600">Сообщение</label>
+                    <textarea id="content" name="content"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                </div>
+                <button type="submit"
+                    class="block bg-[#11405d] py-2 px-7 xl:py-4 xl:px-14 text-white hover:bg-[#208BB0] transition ease-in-out duration-150">Отправить</button>
+            </div>
+        </form>
+
+
+
+		<div class="flex flex-col">
+			<div class="mb-8">
+				<a href="{{ activeRegion.content.yandex_reviews ? activeRegion.content.yandex_reviews : defaultRegion.content.yandex_reviews }}" class="underline text-[#11405d]" target="_blank">
+					<img src="{{ 'assets/images/reviews/yandex.png' | theme }}" class="mb-4" width="200px" alt="">
+					<span class="underline text-[#11405d]">Оставить отзыв на Яндекс картах</span>
+				</a>
+			</div>
+			<div class="mb-8">
+				<a href="{{ activeRegion.content.flamp_reviews ? activeRegion.content.flamp_reviews : defaultRegion.content.flamp_reviews }}" class="underline text-[#11405d]" target="_blank">
+					<img src="{{ 'assets/images/reviews/flamp.jpg' | theme }}" class="mb-4" width="200px" alt="">
+					<span class="underline text-[#11405d]">Оставить отзыв на Флампе</span>
+				</a>
+			</div>
+			<div class="mb-8">
+				<a href="{{ activeRegion.content.google_reviews ? activeRegion.content.google_reviews : defaultRegion.content.google_reviews }}" target="_blank">
+					<img src="{{ 'assets/images/reviews/google_maps.png' | theme }}" class="mb-4" width="200px" alt="">
+					<span class="underline text-[#11405d]">Оставить отзыв на Google картах</span>
+				</a>
+			</div>
+			<div class="mb-8">
+				<a href="{{ activeRegion.content.two_gis_reviews ? activeRegion.content.two_gis_reviews : defaultRegion.content.two_gis_reviews }}" class="underline text-[#11405d]" target="_blank">
+					<img src="{{ 'assets/images/reviews/2gis.png' | theme }}" class="mb-4" width="200px" alt="">
+					<span class="underline text-[#11405d]">Оставить отзыв на 2 gis</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

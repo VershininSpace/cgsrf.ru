@@ -1,0 +1,76 @@
+fields:
+    name:
+        label: ФИО
+        type: text
+        span: storm
+        cssClass: col-md-6
+    email:
+        label: E-mail
+        type: email
+        span: storm
+        cssClass: col-md-3
+    phone:
+        label: Телефон
+        type: text
+        span: storm
+        cssClass: col-md-3
+    title:
+        label: Название
+        type: text
+        span: storm
+        cssClass: col-md-8
+    rating:
+        label: Рейтинг
+        type: starrating
+        span: storm
+        cssClass: col-md-4
+tabs:
+    icons:
+        'Отзыв': icon-newspaper-o
+        'Галлерея': icon-camera-retro
+    fields:
+        content:
+            size: huge
+            span: full
+            type: textarea
+            tab: Отзыв
+        gallery:
+            label: Галлерея
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            tab: Галлерея
+secondaryTabs:
+    fields:
+        published:
+            label: Показан
+            span: full
+            default: 1
+            type: switch
+        published_at:
+            label: 'Дата публикации'
+            mode: datetime
+            span: full
+            default: now
+            type: datepicker
+        photo:
+            label: Фото
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+        # source:
+        #     label: Источник
+        #     type: dropdown
+        #     default: other
+        #     options:
+        #         web: Форма на сайте
+        #         whatsapp: WhatsApp
+        #         other: Другое

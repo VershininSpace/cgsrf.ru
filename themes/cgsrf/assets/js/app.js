@@ -2,6 +2,61 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@alpinejs/persist/dist/module.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@alpinejs/persist/dist/module.esm.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ module_default)
+/* harmony export */ });
+// packages/persist/src/index.js
+function src_default(Alpine) {
+  let persist = () => {
+    let alias;
+    let storage = localStorage;
+    return Alpine.interceptor((initialValue, getter, setter, path, key) => {
+      let lookup = alias || `_x_${path}`;
+      let initial = storageHas(lookup, storage) ? storageGet(lookup, storage) : initialValue;
+      setter(initial);
+      Alpine.effect(() => {
+        let value = getter();
+        storageSet(lookup, value, storage);
+        setter(value);
+      });
+      return initial;
+    }, (func) => {
+      func.as = (key) => {
+        alias = key;
+        return func;
+      }, func.using = (target) => {
+        storage = target;
+        return func;
+      };
+    });
+  };
+  Object.defineProperty(Alpine, "$persist", {get: () => persist()});
+  Alpine.magic("persist", persist);
+}
+function storageHas(key, storage) {
+  return storage.getItem(key) !== null;
+}
+function storageGet(key, storage) {
+  return JSON.parse(storage.getItem(key, storage));
+}
+function storageSet(key, value, storage) {
+  storage.setItem(key, JSON.stringify(value));
+}
+
+// packages/persist/builds/module.js
+var module_default = src_default;
+
+
+
+/***/ }),
+
 /***/ "./node_modules/alpinejs/dist/module.esm.js":
 /*!**************************************************!*\
   !*** ./node_modules/alpinejs/dist/module.esm.js ***!
@@ -2921,6 +2976,8 @@ var module_default = src_default;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var oc_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! oc-request */ "./node_modules/oc-request/src/oc-request.js");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpinejs_persist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @alpinejs/persist */ "./node_modules/@alpinejs/persist/dist/module.esm.js");
+
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -2930,7 +2987,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('region_changer', function
     toggle: function toggle() {
       var _this = this;
 
-      console.log(this.$el.value);
+      console.log(this.$el.target);
       oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendData('onSwitchRegion', {
         data: {
           region: this.$el.value
@@ -2944,7 +3001,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('region_changer', function
     }
   };
 });
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('contact_form', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('review_form', function () {
   return {
     show: false,
     message: null,
@@ -2953,7 +3010,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('contact_form', function (
       var _this2 = this;
 
       console.log(event.target);
-      oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendForm(event.target, 'onFormSubmit', {
+      oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendForm(event.target, 'onSaveReview', {
         success: function success(res) {
           console.log(res);
           _this2.message = 'Ваша форма успешно отправлена!';
@@ -2967,6 +3024,30 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('contact_form', function (
     }
   };
 });
+alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('contact_form', function () {
+  return {
+    show: false,
+    message: null,
+    modale: true,
+    submit: function submit(event) {
+      var _this3 = this;
+
+      console.log(event.target);
+      oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendForm(event.target, 'onFormSubmit', {
+        success: function success(res) {
+          console.log(res);
+          _this3.message = 'Ваша форма успешно отправлена!';
+          _this3.show = true;
+          _this3.form_hidden = false, window.setTimeout(function () {
+            _this3.show = false;
+          }, 3000);
+        },
+        loading: '.preloader-selector'
+      });
+    }
+  };
+});
+alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].plugin(_alpinejs_persist__WEBPACK_IMPORTED_MODULE_2__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
 /***/ }),

@@ -1,0 +1,12 @@
+list: $/albus/reviews/models/review/columns.yaml
+modelClass: Albus\Reviews\Models\Review
+title: Управление отзывами
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'albus/reviews/reviews/update/:id'
