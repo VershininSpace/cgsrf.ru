@@ -18,6 +18,8 @@ ul.links>li:hover {
     color: #11405d;
 }
 
+.breadcrumbs li:not(:first-child)::before { content: '>'; }
+
 .advantages-one {
     background: url('../images/advantages-one.png') no-repeat center center;
     background-color: #208BB0;

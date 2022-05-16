@@ -128,7 +128,6 @@ class LeaveRreview extends ComponentBase
         $Review->unread = true;
 
         $Review->save();
-        return Redirect::refresh();
     }
 
 }

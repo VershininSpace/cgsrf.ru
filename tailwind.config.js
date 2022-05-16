@@ -6,7 +6,14 @@ module.exports = {
     "./themes/cgsrf/layouts/**/*.htm",
   ],
   theme: {
-    extend: {},
+    extend: {
+			colors: {
+      	'primary': {
+					'800' : '#11405d',
+					'DEFAULT' : '#11405d',
+				}
+    	},
+		},
   },
   plugins: [],
 }

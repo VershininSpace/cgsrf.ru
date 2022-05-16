@@ -7,7 +7,6 @@ window.Alpine = Alpine
 Alpine.data('region_changer', () => ({
     region: null,
     toggle() {
-        console.log(this.$el.target);
         request.sendData('onSwitchRegion', {
             data: {
                 region: this.$el.value,
@@ -27,11 +26,9 @@ Alpine.data('review_form', () => ({
     message: null,
     modale: true,
     submit(event) {
-        console.log(event.target);
         request.sendForm(event.target, 'onSaveReview', {
             success: (res) => {
-                console.log(res);
-                this.message = 'Ваша форма успешно отправлена!';
+                this.message = 'Ваша отзыв успешно отправлен!';
                 this.show = true;
                 this.form_hidden = false,
                 window.setTimeout(() => {
@@ -48,10 +45,8 @@ Alpine.data('contact_form', () => ({
     message: null,
     modale: true,
     submit(event) {
-        console.log(event.target);
         request.sendForm(event.target, 'onFormSubmit', {
             success: (res) => {
-                console.log(res);
                 this.message = 'Ваша форма успешно отправлена!';
                 this.show = true;
                 this.form_hidden = false,

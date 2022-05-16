@@ -2987,7 +2987,6 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('region_changer', function
     toggle: function toggle() {
       var _this = this;
 
-      console.log(this.$el.target);
       oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendData('onSwitchRegion', {
         data: {
           region: this.$el.value
@@ -3009,11 +3008,9 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('review_form', function ()
     submit: function submit(event) {
       var _this2 = this;
 
-      console.log(event.target);
       oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendForm(event.target, 'onSaveReview', {
         success: function success(res) {
-          console.log(res);
-          _this2.message = 'Ваша форма успешно отправлена!';
+          _this2.message = 'Ваша отзыв успешно отправлен!';
           _this2.show = true;
           _this2.form_hidden = false, window.setTimeout(function () {
             _this2.show = false;
@@ -3032,10 +3029,8 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('contact_form', function (
     submit: function submit(event) {
       var _this3 = this;
 
-      console.log(event.target);
       oc_request__WEBPACK_IMPORTED_MODULE_0__["default"].sendForm(event.target, 'onFormSubmit', {
         success: function success(res) {
-          console.log(res);
           _this3.message = 'Ваша форма успешно отправлена!';
           _this3.show = true;
           _this3.form_hidden = false, window.setTimeout(function () {

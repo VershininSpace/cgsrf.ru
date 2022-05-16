@@ -1,68 +1,103 @@
 url = "/reviews"
 layout = "default"
 title = "Отзывы"
+breadcrumbs = "assets/images/reviews/reviews.jpg"
 ==
+{% set reviews_items = [
+    {
+        'title' : 'Яндекс картах',
+        'image' : 'yandex.svg',
+        'type' : 'yandex_reviews'
+    },
+    {
+        'title' : 'Флампе',
+        'image' : 'flamp.svg',
+        'type' : 'flamp_reviews'
+    },
+    {
+        'title' : 'Google картах',
+        'image' : 'google.svg',
+        'type' : 'google_reviews'
+    },
+    {
+        'title' : '2GIS',
+        'image' : '2gis.svg',
+        'type' : 'two_gis_reviews'
+    },
+] %}
 <section class="text-gray-600 body-font relative">
-	<div class="container px-5 py-24 mx-auto">
-		<h2 class="font-extrabold text-3xl xl:text-6xl mb-6">Оцентите нашу работу!</h2>
+    <div class="container px-5 py-24 mx-auto">
+        <h2 class="font-extrabold text-3xl xl:text-6xl mb-6">Оцентите нашу работу!</h2>
 
-        <form id="contact_form" class="mb-5" x-data="review_form" @submit.prevent="submit">
-            <div class="bg-blue-500 p-4 fixed top-[20px] right-[20px] rounded-2xl text-white font-bold" x-transition:enter.duration.500ms x-show.transition="show" x-text="message"></div>
-            {{ form_token() }}
-            <div>
-                <div class="rounded-3xl font-bold" x-transition:enter.duration.500ms x-text="message"></div>
-                <div class="relative mb-4">
-                    <label for="name" class="leading-7 text-sm text-gray-600">Ваше имя</label>
-                    <input type="text" id="name" name="name"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                </div>
-                <div class="relative mb-4">
-                    <label for="rating" class="leading-7 text-sm text-gray-600">Рейтинг</label>
-                    <input type="number" value="1" id="rating" name="rating"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                </div>
-                <div class="relative mb-4">
-                    <label for="phone" class="leading-7 text-sm text-gray-600">Телефон</label>
-                    <input type="phone" id="phone" required name="phone"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                </div>
-                <div class="relative mb-4">
-                    <label for="content" class="leading-7 text-sm text-gray-600">Сообщение</label>
-                    <textarea id="content" name="content"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                </div>
-                <button type="submit"
-                    class="block bg-[#11405d] py-2 px-7 xl:py-4 xl:px-14 text-white hover:bg-[#208BB0] transition ease-in-out duration-150">Отправить</button>
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                <form id="review_form" class="mb-5" x-data="review_form" @submit.prevent="submit">
+                    <div class="bg-blue-500 p-4 fixed top-[20px] right-[20px] rounded-2xl text-white font-bold"
+                        x-transition:enter.duration.500ms x-show.transition="show" x-text="message"></div>
+                    {{ form_token() }}
+                    <div>
+                        <div class="rounded-3xl font-bold" x-transition:enter.duration.500ms x-text="message"></div>
+                        <div class="relative mb-4">
+                            <label for="name" class="leading-7 text-sm text-gray-600">Ваше имя</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        {#<div class="relative mb-4">
+                            <label for="rating" class="leading-7 text-sm text-gray-600">Рейтинг</label>
+                            <input type="number" value="1" id="rating" name="rating"
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>#}
+                        <div class="relative mb-4">
+                            <label for="phone" class="leading-7 text-sm text-gray-600">Телефон</label>
+                            <input type="phone" id="phone" required name="phone"
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        <div class="relative mb-4">
+                            <label for="content" class="leading-7 text-sm text-gray-600">Сообщение</label>
+                            <textarea id="content" name="content"
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                        <div class="relative mb-4">
+                            <label for="rating" class="leading-7 text-sm text-gray-600">Рейтинг</label>
+                            <div x-data="{ temp: 5, orig: 5 }" class="flex cursor-pointer text-4xl" @click="orig = temp">
+                                <input type="number" id="rating" name="rating" :value="orig" class="hidden" />
+                                <template x-for="item in [1,2,3,4,5]">
+                                    <span @mouseenter="temp = item" @mouseleave="temp = orig" class="text-gray-300"
+                                        :class="{'text-primary': (temp >= item)}">
+                                        <svg class="w-15 transition duration-150 w-12" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    </span>
+                                </template>
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="block bg-primary py-2 px-7 xl:py-4 xl:px-14 text-white hover:bg-[#208BB0] transition ease-in-out duration-150">Отправить</button>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="col-span-12  md:col-span-6 lg:col-span-4 xl:col-span-4">
+                <div class="flex flex-col xl:pl-20">                  
+                    {% for item in reviews_items %}
+                        <a href="{{ activeRegion.content[item.type] ? activeRegion.content[item.type] : defaultRegion.content[item.type] }}"
+                        target="_blank"
+                        title="Оставить отзыв на<br>{{ item.title }}"
+                        class="hover:bg-gray-600 group {{ not loop.last ? 'mb-4' }} transition flex items-center border-2 border-gray-200 border-opacity-60 rounded-lg p-3">
+                            <img src="{{ ('assets/images/reviews/' ~ item.image) | theme }}" class="mr-4 group-hover:scale-110 transition-all" role="presentation" width="60px" alt="">
+                            <div class="text-xl text-center transition text-gray-600 grow group-hover:text-white ">Оставить отзыв на<br>{{ item.title }}</div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
 
 
-		<div class="flex flex-col">
-			<div class="mb-8">
-				<a href="{{ activeRegion.content.yandex_reviews ? activeRegion.content.yandex_reviews : defaultRegion.content.yandex_reviews }}" class="underline text-[#11405d]" target="_blank">
-					<img src="{{ 'assets/images/reviews/yandex.png' | theme }}" class="mb-4" width="200px" alt="">
-					<span class="underline text-[#11405d]">Оставить отзыв на Яндекс картах</span>
-				</a>
-			</div>
-			<div class="mb-8">
-				<a href="{{ activeRegion.content.flamp_reviews ? activeRegion.content.flamp_reviews : defaultRegion.content.flamp_reviews }}" class="underline text-[#11405d]" target="_blank">
-					<img src="{{ 'assets/images/reviews/flamp.jpg' | theme }}" class="mb-4" width="200px" alt="">
-					<span class="underline text-[#11405d]">Оставить отзыв на Флампе</span>
-				</a>
-			</div>
-			<div class="mb-8">
-				<a href="{{ activeRegion.content.google_reviews ? activeRegion.content.google_reviews : defaultRegion.content.google_reviews }}" target="_blank">
-					<img src="{{ 'assets/images/reviews/google_maps.png' | theme }}" class="mb-4" width="200px" alt="">
-					<span class="underline text-[#11405d]">Оставить отзыв на Google картах</span>
-				</a>
-			</div>
-			<div class="mb-8">
-				<a href="{{ activeRegion.content.two_gis_reviews ? activeRegion.content.two_gis_reviews : defaultRegion.content.two_gis_reviews }}" class="underline text-[#11405d]" target="_blank">
-					<img src="{{ 'assets/images/reviews/2gis.png' | theme }}" class="mb-4" width="200px" alt="">
-					<span class="underline text-[#11405d]">Оставить отзыв на 2 gis</span>
-				</a>
-			</div>
-		</div>
-	</div>
+
+
+
+
+
+    </div>
 </section>
