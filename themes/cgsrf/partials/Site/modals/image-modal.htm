@@ -1,0 +1,11 @@
+<div x-data="{ open: false, imgModalSrc : '', imgModalDesc : '' }" @image-modal.window="open = $event.detail; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;">
+    <div x-cloak x-show="open"
+        class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white relative w-[90%] md:w-auto p-10 rounded shadow-md max-h-screen overflow-auto">
+            <button class="menu_toogle text-[#11405d] text-3xl float-right" @click="open = ! open">✖</button>
+
+			<p class="leading-relaxed mb-5 text-gray-600" x-text="imgModalDesc" ></p>
+                <img class="object-contain" :src="imgModalSrc">            
+        </div>
+    </div>
+</div>

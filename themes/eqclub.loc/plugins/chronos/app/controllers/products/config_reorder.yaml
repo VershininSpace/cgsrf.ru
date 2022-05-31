@@ -1,5 +1,0 @@
-title: Products
-modelClass: Chronos\App\Models\Product
-toolbar:
-    buttons: reorder_toolbar
-nameFrom: title

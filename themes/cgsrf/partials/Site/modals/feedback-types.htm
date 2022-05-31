@@ -1,0 +1,40 @@
+<nav id="feedback-types" class="fixed bottom-0 right-0 left-0 bg-white shadow-md transition-all duration-600 z-50" x-data="{ isOpen: false }" :class="isOpen ? 'h-auto': 'h-0'"  @feedback-types.window="isOpen = $event.detail">
+    <button type="button" @click="isOpen = !isOpen" class="absolute right-0  hover:bg-[#208BB0] bg-[#11405d] text-white p-1 px-3">Закрыть</button>
+    <ul>
+        <li>
+            <a href="tel:{{ activeRegion.phones[0].item | replace({' ': '', '-': '', '(': '', ')': ''}) }}" target="_blank" name="WhatsApp" class="p-4 block border-b flex items-center hover:bg-gray-200">
+                <span class="icon">
+                    <img src="{{ 'assets/images/phone_icon.svg' | theme }}" role="presentation" width="32px"/>
+                </span>
+                <span class="decription flex flex-col pl-3">
+                    <span class="font-bold title">Позвонить</span>
+                    <span class="subtitle text-gray-800 text-xs text-sm">Ответим в любое время!</span>
+                </span>
+            </a>        
+        </li>
+        <li>
+            <span  x-data @click="$dispatch('open-modal');
+                    document.querySelector('#form_service').value = document.querySelector('#form_title').innerHTML = 'Обратный звонок'"
+                     name="WhatsApp" class="p-4 block border-b flex items-center hover:bg-gray-200 cursor-pointer">
+                <span class="icon">
+                    <img src="{{ 'assets/images/mail_icon.svg' | theme }}" role="presentation"  width="32px"/>
+                </span>
+                <span class="decription flex flex-col pl-3">
+                    <span class="font-bold title">Заказать звонок</span>
+                    <span class="subtitle text-gray-800 text-xs text-sm">Проконсультируем по любому вопросу</span>
+                </span>
+            </span>        
+        </li>
+        <li>
+            <a href="{{ this.theme.whatsapp }}" target="_blank" name="WhatsApp" class="p-4 block border-b flex items-center hover:bg-gray-200">
+                <span class="icon">
+                    <img src="{{ 'assets/images/wa_icon.svg' | theme }}" role="presentation" />
+                </span>
+                <span class="decription flex flex-col pl-3">
+                    <span class="font-bold title">WhatsApp</span>
+                    <span class="subtitle text-gray-800 text-xs text-sm">Напишите нам</span>
+                </span>
+            </a>        
+        </li>
+    </ul>
+</nav>

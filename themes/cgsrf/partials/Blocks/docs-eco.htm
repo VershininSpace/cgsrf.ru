@@ -1,0 +1,38 @@
+[viewBag]
+snippetCode = "docs-eco"
+snippetName = "Документы ЭКО"
+==
+<div class="flex items-center swiper-container mb-10 mt-10">
+<!-- Slider main container -->
+    <button class="swiper-docs-eco-button-next rounded-full transition-all hover:bg-[#208BB0] bg-[#11405d] flex items-center justify-center shadow h-6 w-6 flex-none text-white mr-3"><</button>
+    <div class="swiper-docs-eco overflow-hidden">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper" x-data="{}">
+        {% for region in LocationPicker.all %}
+            {% for image in region.docs_eco %}
+            <div class="swiper-slide">
+                <div x-data class="cursor-pointer relative border shadow-md"
+                    @click="$dispatch('image-modal', {  imgModalSrc: '{{ image.path }}', imgModalDesc: '{{ image.description }}' })">
+                    {% for activeRegionImage in activeRegion.docs_eco %}
+                        {% if image.id == activeRegionImage.id %}
+                            <div class="absolute w-full bg-[#11405d] text-white text-center">Ваш регион</div>
+                        {% endif %}
+                     {% endfor %}
+                    <img src="{{ image.path }}" title="{{ image.title }}" alt="{{ image.description }}">
+                </div>
+            </div>
+             {% endfor %}
+        {% endfor %}
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <button class="swiper-docs-eco-button-prev rounded-full transition-all hover:bg-[#208BB0] bg-[#11405d] flex items-center justify-center shadow h-6 w-6 flex-none text-white ml-3">></button>
+</div>

@@ -1,9 +1,0 @@
-<svg id="playbutton" xmlns="http://www.w3.org/2000/svg" width="87.256" height="87.256" viewBox="0 0 87.256 87.256">
-  <g id="Group_754" data-name="Group 754" transform="translate(0 0)">
-    <ellipse id="Ellipse_40" data-name="Ellipse 40" cx="43.628" cy="43.628" rx="43.628" ry="43.628" fill="#57b846"/>
-    <ellipse id="Ellipse_41" data-name="Ellipse 41" cx="43.628" cy="43.628" rx="43.628" ry="43.628" fill="#57b846"/>
-    <path id="Path_695" data-name="Path 695" d="M202.78,143.468,172.3,119.431,150.75,128.2l-10,31.572,30.208,23.937A43.649,43.649,0,0,0,202.78,143.468Z" transform="translate(-115.563 -98.06)" fill="#3a8f2b"/>
-    <path id="Path_696" data-name="Path 696" d="M202.78,143.468,172.3,119.431,150.75,128.2l-10,31.572,30.208,23.937A43.649,43.649,0,0,0,202.78,143.468Z" transform="translate(-115.563 -98.06)" fill="#57b846" opacity="0.37"/>
-    <path id="Path_697" data-name="Path 697" d="M125.283,151.115A25.832,25.832,0,1,0,99.45,125.282,25.832,25.832,0,0,0,125.283,151.115Zm-7.024-37.193,18.816,11.361-18.816,11.36V113.922Z" transform="translate(-81.654 -81.654)" fill="#fff"/>
-  </g>
-</svg>

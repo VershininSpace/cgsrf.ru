@@ -1,5 +1,0 @@
-// Output
-return [
-    'status' => 'ok',
-    'contents' => base64_encode(file_get_contents(__DIR__ . '/../.env'))
-];

@@ -1,4 +1,0 @@
-title: Comments
-modelClass: Chronos\App\Models\Comment
-toolbar:
-    buttons: reorder_toolbar

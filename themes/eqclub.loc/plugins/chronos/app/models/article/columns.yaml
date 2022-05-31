@@ -1,8 +1,0 @@
-columns:
-    title:
-        label: Заголовок
-        type: text
-    image:
-        label: Картинка
-        type: partial
-        path: ~/plugins/chronos/app/models/_image_column.htm

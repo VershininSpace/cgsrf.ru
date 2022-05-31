@@ -1,7 +1,0 @@
-columns:
-    name:
-        label: Имя
-        type: text
-    content:
-        label: 'Текст комментария'
-        type: text

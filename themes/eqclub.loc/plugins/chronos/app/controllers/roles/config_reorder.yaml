@@ -1,5 +1,0 @@
-title: Roles
-modelClass: Chronos\App\Models\Role
-toolbar:
-    buttons: reorder_toolbar
-nameFrom: title
